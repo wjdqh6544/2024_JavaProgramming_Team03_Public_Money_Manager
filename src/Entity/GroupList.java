@@ -15,7 +15,7 @@ public class GroupList {
     public GroupList(Group... groupObjList) { // constructor with parameter
         setAllGroupList(new ArrayList<Group>());
         for (Group groupObj : groupObjList) {
-            addGroupToList(groupObj);
+            addGroupToList(new Group(groupObj));
         }
     }
     public GroupList(GroupList otherObj) { // copy constructor
@@ -24,7 +24,7 @@ public class GroupList {
     public ArrayList<Group> cloneArrList(ArrayList<Group> allGroupList) {
         ArrayList<Group> newArr = new ArrayList<Group>();
         for (Group groupObj : allGroupList) {
-            newArr.add(groupObj);
+            newArr.add(new Group(groupObj));
         }
         return newArr;
     }

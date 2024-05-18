@@ -18,7 +18,7 @@ public class Group implements cloneArrayList{
         setGroupName(name);
         setMemberList(new ArrayList<Member>());
         for (Member memberObj : memberObjList) {
-            addMember(memberObj);
+            addMember(new Member(memberObj));
         }
     }
     public Group(Group otherObj){ // copy constructor
@@ -28,7 +28,7 @@ public class Group implements cloneArrayList{
     public ArrayList<Member> cloneArrList(ArrayList<Member> original){
         ArrayList<Member> newArr = new ArrayList<Member>();
         for (Member obj : original) {
-            newArr.add(obj);
+            newArr.add(new Member(obj));
         }
         return newArr;
     }

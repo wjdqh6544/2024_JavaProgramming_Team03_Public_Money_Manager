@@ -15,7 +15,7 @@ public class MemberList implements cloneArrayList{
     public MemberList(Member... MemberObjList) { // constructor with parameter
         setAllMemberList(new ArrayList<Member>());
         for (Member memberObj : MemberObjList) {
-            addMemberToList(memberObj);
+            addMemberToList(new Member(memberObj));
         }
     }
     public MemberList(MemberList originArrList) { // copy constructor
@@ -25,7 +25,7 @@ public class MemberList implements cloneArrayList{
     public ArrayList<Member> cloneArrList(ArrayList originalArrList) {
         ArrayList<Member> newArr = new ArrayList<Member>();
         for (Member obj : allMemberList) {
-            newArr.add(obj);
+            newArr.add(new Member(obj));
         }
         return newArr;
     }
