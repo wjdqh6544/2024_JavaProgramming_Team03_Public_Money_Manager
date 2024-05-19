@@ -18,14 +18,11 @@ public class Member {
         setEmail("None");
         setGroupList(new ArrayList<MemberPosition>());
     }
-    public Member(String name, int year, int month, int day, String email, MemberPosition... inputGroupList) { // Constructor with Parameters
+    public Member(String name, int year, int month, int day, String email) { // Constructor with Parameters
         setName(name);
         setBirthday(new Date(year, month, day));
         setEmail(email);
         setGroupList(new ArrayList<MemberPosition>());
-        for (MemberPosition group : inputGroupList) {
-            addGroup(group);
-        }
     }
     public Member(Member otherObj){ // copy constructor
         setName(otherObj.getName());

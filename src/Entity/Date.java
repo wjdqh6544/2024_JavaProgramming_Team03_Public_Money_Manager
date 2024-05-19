@@ -25,6 +25,11 @@ public class Date {
         setMonth(otherObj.getMonth());
         setDay(otherObj.getDay());
     }
+
+    @Override
+    public String toString(){
+        return getYear() + ". " + getMonth() + ". " + getDay();
+    }
     public int getYear() { return this.year; }
     public int getMonth() { return this.month; }
     public int getDay() { return this.day; }
