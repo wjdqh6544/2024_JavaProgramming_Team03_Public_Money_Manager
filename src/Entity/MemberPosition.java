@@ -1,7 +1,4 @@
 package Entity;
-
-import javafx.geometry.Pos;
-
 /*
  * COMP217: Java Programming / Team 03
  * Prof: Suh, Young-Kyoon

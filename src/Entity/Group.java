@@ -18,13 +18,10 @@ public class Group implements cloneArrayList{
         setMemberList(new ArrayList<Member>());
         setTransactionList(new ArrayList<Transaction>());
     }
-    public Group(String name, Member president, Member... memberObjList) { // Constructor with parameter
+    public Group(String name, Member president) { // Constructor with parameter
         setGroupName(name);
         setPresident(president);
         setMemberList(new ArrayList<Member>());
-        for (Member memberObj : memberObjList) {
-            addMember(new Member(memberObj));
-        }
         setTransactionList(new ArrayList<Transaction>());
     }
     public Group(Group otherObj){ // copy constructor

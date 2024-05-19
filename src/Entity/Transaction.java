@@ -22,7 +22,7 @@ public class Transaction implements cloneArrayList {
         setSettlement(false);
         setMemberList(new ArrayList<Member>());
     }
-    public Transaction(int year, int month, int day, String event, int income, int expense, boolean settlement, Member... memberObjList) { // constructor with parameter
+    public Transaction(int year, int month, int day, String event, int income, int expense, boolean settlement, Member[] memberObjList) { // constructor with parameter
         setDate(new Date(year, month, day));
         setEvent(event);
         setIncome(income);

@@ -1,10 +1,7 @@
 package Service;
-
 import Entity.Member;
 import Entity.MemberList;
-
 import java.util.ArrayList;
-
 /*
  * COMP217: Java Programming / Team 03
  * Prof: Suh, Young-Kyoon
