@@ -9,19 +9,19 @@ import java.util.ArrayList;
  */
 public class Group implements cloneArrayList{
     private String groupName;
-    private Member president;
-    private ArrayList<Member> groupMemberList;
+    private President president;
+    private ArrayList<abs_Member> groupMemberList;
     private ArrayList<Transaction> transactionList;
     public Group() { // default constructor
         setGroupName("None");
         setPresident(null);
-        setMemberList(new ArrayList<Member>());
+        setMemberList(new ArrayList<abs_Member>());
         setTransactionList(new ArrayList<Transaction>());
     }
-    public Group(String name, Member president) { // Constructor with parameter
+    public Group(String name, President president) { // Constructor with parameter
         setGroupName(name);
         setPresident(president);
-        setMemberList(new ArrayList<Member>());
+        setMemberList(new ArrayList<abs_Member>());
         setTransactionList(new ArrayList<Transaction>());
     }
     public Group(Group otherObj){ // copy constructor
@@ -30,10 +30,16 @@ public class Group implements cloneArrayList{
         setMemberList(otherObj.getMemberList()); // Copied ArrayList
         setTransactionList(otherObj.getTransactionList()); // Copied ArrayList
     }
-    public ArrayList<Member> cloneArrList(ArrayList<Member> original){
-        ArrayList<Member> newArr = new ArrayList<Member>();
-        for (Member obj : original) {
-            newArr.add(new Member(obj));
+    public ArrayList<abs_Member> cloneArrList(ArrayList<abs_Member> original){
+        ArrayList<abs_Member> newArr = new ArrayList<abs_Member>();
+        for (abs_Member obj : original) {
+            if (obj instanceof Administrator){
+                newArr.add(new Administrator(obj));
+            } else if (obj instanceof President){
+                newArr.add(new President(obj));
+            } else {
+                newArr.add((new Member(obj)));
+            }
         }
         return newArr;
     }
@@ -45,15 +51,15 @@ public class Group implements cloneArrayList{
         return newArr;
     }
     public String getGroupName() { return this.groupName; }
-    public Member getPresident() {return new Member(this.president); }
-    public ArrayList<Member> getMemberList() { return cloneArrList(this.groupMemberList); }
+    public President getPresident() {return new President(this.president); }
+    public ArrayList<abs_Member> getMemberList() { return cloneArrList(this.groupMemberList); }
 
     public ArrayList<Transaction> getTransactionList() { return cloneTransList(this.transactionList); }
 
     private void setGroupName(String name) { this.groupName = name; }
-    private void setPresident(Member president) { this.president = president; }
-    private void setMemberList(ArrayList<Member> groupMemberList) { this.groupMemberList = groupMemberList; }
+    private void setPresident(President president) { this.president = president; }
+    private void setMemberList(ArrayList<abs_Member> groupMemberList) { this.groupMemberList = groupMemberList; }
     private void setTransactionList(ArrayList<Transaction> transactionList) { this.transactionList = transactionList; }
-    public void addMember(Member obj) { this.groupMemberList.add(obj); }
+    public void addMember(abs_Member obj) { this.groupMemberList.add(obj); }
     public void addTransaction(Transaction obj) { this.transactionList.add(obj); }
 }

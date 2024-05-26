@@ -8,5 +8,5 @@ import java.util.ArrayList;
  * @author: Seo, HyeongCheol
  */
 public interface cloneArrayList {
-    public ArrayList<Member> cloneArrList(ArrayList<Member> originalArrList);
+    public ArrayList<abs_Member> cloneArrList(ArrayList<abs_Member> originalArrList);
 }

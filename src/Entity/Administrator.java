@@ -6,17 +6,17 @@ import javax.naming.NoPermissionException;
  * COMP217: Java Programming / Team 03
  * Prof: Suh, Young-Kyoon
  *
- * Member: class which can save some information of each member object
+ * Administrator: class which have methods that only can be used by Administrator. (this class is inherited "Member" abstract class.)
  * @author: Seo, HyeongCheol
  */
-public class Member extends abs_Member {
-    public Member(){
+public class Administrator extends abs_Member {
+    public Administrator(){
         super();
     }
-    public Member(String name, int year, int month, int day, String email) { // Constructor with Parameters
+    public Administrator(String name, int year, int month, int day, String email){
         super(name, year, month, day, email);
     }
-    public Member(abs_Member obj){
+    public Administrator(abs_Member obj){
         super(obj);
     }
 
@@ -27,6 +27,6 @@ public class Member extends abs_Member {
 
     @Override
     public void addTransaction() throws NoPermissionException {
-        throw new NoPermissionException();
     }
 }
+

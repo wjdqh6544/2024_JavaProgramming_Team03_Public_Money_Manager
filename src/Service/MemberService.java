@@ -1,6 +1,11 @@
 package Service;
-import Entity.Member;
+
+import Entity.Administrator;
 import Entity.MemberList;
+import Entity.President;
+import Entity.abs_Member;
+import Entity.Member;
+
 import java.util.ArrayList;
 /*
  * COMP217: Java Programming / Team 03
@@ -11,22 +16,29 @@ import java.util.ArrayList;
  */
 public class MemberService {
     private MemberList memberList;
-    private Member member;
-    public ArrayList<Member> findAllMember(){
+    private abs_Member member;
+    public ArrayList<abs_Member> findAllMember(){
         return memberList.getAllMemberList();
     }
-    public Member findMemberByNameAndEmail(String name, String email) {
-        ArrayList<Member> allMemberList = memberList.getAllMemberList();
-        for (Member obj : allMemberList) {
+    public abs_Member findMemberByNameAndEmail(String name, String email) {
+        ArrayList<abs_Member> allMemberList = memberList.getAllMemberList();
+        for (abs_Member obj : allMemberList) {
             if (obj.getName().equals(name) && obj.getEmail().equals(email)) {
-                return new Member(obj);
+                if (obj instanceof Administrator){
+                    return new Administrator(obj);
+                } else if (obj instanceof President){
+                    return new President(obj);
+                } else {
+                    return new Member(obj);
+                }
+
             }
         }
         return null;
     }
     public boolean createMember(String name, int year, int month, int day, String email) {
         try {
-            Member newMember = new Member(name, year, month, day, email);
+            abs_Member newMember = new Member(name, year, month, day, email);
             memberList.addMemberToList(newMember);
             return true;
         } catch(Exception e) {
