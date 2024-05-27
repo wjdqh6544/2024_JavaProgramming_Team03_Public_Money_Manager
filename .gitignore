@@ -27,3 +27,6 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### Custom ###
+COMP0217001_serviceLogic.iml
