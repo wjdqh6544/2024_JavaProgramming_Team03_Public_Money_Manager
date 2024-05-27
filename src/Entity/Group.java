@@ -7,10 +7,11 @@ import java.util.ArrayList;
  * Group: class which can save some information of each Group object
  * @author: Seo, HyeongCheol
  */
-public class Group implements cloneArrayList{
+public class Group implements cloneArrayList {
     private String groupName;
     private President president;
-    private ArrayList<abs_Member> groupMemberList;
+    private Administrator administrator;
+    private ArrayList<abs_Member> MemberList;
     private ArrayList<Transaction> transactionList;
     public Group() { // default constructor
         setGroupName("None");
@@ -52,14 +53,14 @@ public class Group implements cloneArrayList{
     }
     public String getGroupName() { return this.groupName; }
     public President getPresident() {return this.president; }
-    public ArrayList<abs_Member> getMemberList() { return this.groupMemberList; }
-
+    public Administrator getAdministrator() { return this.administrator; }
+    public ArrayList<abs_Member> getMemberList() { return this.MemberList; }
     public ArrayList<Transaction> getTransactionList() { return this.transactionList; }
-
-    private void setGroupName(String name) { this.groupName = name; }
-    private void setPresident(President president) { this.president = president; }
-    private void setMemberList(ArrayList<abs_Member> groupMemberList) { this.groupMemberList = groupMemberList; }
-    private void setTransactionList(ArrayList<Transaction> transactionList) { this.transactionList = transactionList; }
-    public void addMember(abs_Member obj) { this.groupMemberList.add(obj); }
+    public void setGroupName(String name) { this.groupName = name; }
+    public void setPresident(President president) { this.president = president; }
+    public void setAdministrator(Administrator administrator) { this.administrator = administrator; }
+    public void setMemberList(ArrayList<abs_Member> groupMemberList) { this.MemberList = groupMemberList; }
+    public void setTransactionList(ArrayList<Transaction> transactionList) { this.transactionList = transactionList; }
+    public void addMember(abs_Member obj) { this.MemberList.add(obj); }
     public void addTransaction(Transaction obj) { this.transactionList.add(obj); }
 }

@@ -63,13 +63,13 @@ public class Transaction implements cloneArrayList {
     public int getIncome() { return this.income; }
     public int getExpense() { return expense; }
     public boolean isSettlement() { return settlement; }
-    private void setDate(Date date) { this.date = date; }
-    private void setEvent(String event) { this.event = event; }
-    private void setMemberList(ArrayList<abs_Member> memberList) { this.memberList = memberList; }
-    private void setFinishMember(ArrayList<abs_Member> finishMember) { this.finishMember = finishMember; }
-    private void setIncome(int income) { this.income = income; }
-    private void setExpense(int expense) { this.expense = expense; }
-    private void setSettlement(boolean settlement) { this.settlement = settlement; }
+    public void setDate(Date date) { this.date = date; }
+    public void setEvent(String event) { this.event = event; }
+    public void setMemberList(ArrayList<abs_Member> memberList) { this.memberList = memberList; }
+    public void setFinishMember(ArrayList<abs_Member> finishMember) { this.finishMember = finishMember; }
+    public void setIncome(int income) { this.income = income; }
+    public void setExpense(int expense) { this.expense = expense; }
+    public void setSettlement(boolean settlement) { this.settlement = settlement; }
     public void addMember(abs_Member obj) { this.memberList.add(obj); }
     public void addFinishMember(abs_Member obj) { this.finishMember.add(obj); }
 }

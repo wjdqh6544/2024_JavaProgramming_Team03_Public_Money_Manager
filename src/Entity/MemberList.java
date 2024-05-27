@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author: Seo, HyeongCheol
  */
 public class MemberList implements cloneArrayList{
-    private ArrayList<abs_Member> allMemberList;
+    private ArrayList<abs_Member> allMemberList = null;
     public MemberList() { // default constructor
         setAllMemberList(new ArrayList<abs_Member>());
     }
@@ -33,7 +33,7 @@ public class MemberList implements cloneArrayList{
         return newArr;
     }
     public ArrayList<abs_Member> getAllMemberList() { return this.allMemberList; }
-    private void setAllMemberList(ArrayList<abs_Member> allMemberList) { this.allMemberList = allMemberList; }
+    public void setAllMemberList(ArrayList<abs_Member> allMemberList) { this.allMemberList = allMemberList; }
     public void addMemberToList(abs_Member obj) {
         this.allMemberList.add(obj);
     }

@@ -1,4 +1,7 @@
 package Entity;
+
+import java.io.Serializable;
+
 /*
  * COMP217: Java Programming / Team 03
  * Prof: Suh, Young-Kyoon
@@ -6,7 +9,7 @@ package Entity;
  * Date: class For representation of date
  * @author: Seo, HyeongCheol
  */
-public class Date {
+public class Date implements Serializable {
     private int year;
     private int month;
     private int day;
@@ -33,7 +36,7 @@ public class Date {
     public int getYear() { return this.year; }
     public int getMonth() { return this.month; }
     public int getDay() { return this.day; }
-    private void setYear(int year) { this.year = year; }
-    private void setMonth(int month) { this.month = month; }
-    private void setDay (int day) { this.day = day; }
+    public void setYear(int year) { this.year = year; }
+    public void setMonth(int month) { this.month = month; }
+    public void setDay (int day) { this.day = day; }
 }

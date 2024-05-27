@@ -26,7 +26,7 @@ public class GroupList {
         return newArr;
     }
     public ArrayList<Group> getAllGroupList() { return this.allGroupList; }
-    private void setAllGroupList(ArrayList<Group> allGroupList) { this.allGroupList = allGroupList; }
+    public void setAllGroupList(ArrayList<Group> allGroupList) { this.allGroupList = allGroupList; }
     public void addGroupToList(Group obj){
         this.allGroupList.add(obj);
     }

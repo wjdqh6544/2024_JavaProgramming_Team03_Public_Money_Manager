@@ -1,11 +1,6 @@
 package Service;
 
-import Entity.Group;
-import Entity.GroupList;
-import Entity.Member;
-import Entity.President;
-import Entity.abs_Member;
-import Entity.Transaction;
+import Entity.*;
 
 import java.util.ArrayList;
 /*
@@ -19,6 +14,9 @@ public class GroupService {
     private Group group;
     private Transaction transaction;
     private GroupList groupList;
+    public void setGroupAdministrator(abs_Member memberObj) {
+        group.setAdministrator((Administrator) memberObj);
+    }
     public void addTransactionHistory(int year, int month, int day, String event, int income, int expense, boolean settlement, ArrayList<abs_Member> memberObjList){
         Transaction transObj = new Transaction(year, month, day, event, income, expense, settlement, memberObjList);
         group.addTransaction(transObj);

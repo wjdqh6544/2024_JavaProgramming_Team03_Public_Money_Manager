@@ -23,6 +23,6 @@ public class MemberPosition {
     }
     public String getGroupName(){ return this.groupName; }
     public PositionList getPosition() { return this.position; }
-    private void setGroupName(String groupName) { this.groupName = groupName; }
-    private void setPosition(PositionList position) { this.position = position; }
+    public void setGroupName(String groupName) { this.groupName = groupName; }
+    public void setPosition(PositionList position) { this.position = position; }
 }

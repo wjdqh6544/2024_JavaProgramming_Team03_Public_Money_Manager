@@ -1,6 +1,6 @@
 package Entity;
 
-import javax.naming.NoPermissionException;
+import Exception.NoPermissionException;
 
 /*
  * COMP217: Java Programming / Team 03

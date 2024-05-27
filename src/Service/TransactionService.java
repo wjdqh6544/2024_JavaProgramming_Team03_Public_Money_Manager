@@ -17,13 +17,13 @@ public class TransactionService {
     public void addFinishMember(abs_Member obj){
         transaction.addFinishMember(obj);
     }
-    public ArrayList<abs_Member> getAllFinishMember() {
+    public ArrayList<abs_Member> findAllFinishMember() {
         return transaction.getFinishMember();
     }
-    public ArrayList<abs_Member> getAllMember(){
+    public ArrayList<abs_Member> findAllMember(){
         return transaction.getMemberList();
     }
-    public int getExpensePerPeople(Transaction transObj) {
+    public int findExpensePerPeople(Transaction transObj) {
         return Math.round(transObj.getExpense() / transObj.getMemberList().size());
     }
 }

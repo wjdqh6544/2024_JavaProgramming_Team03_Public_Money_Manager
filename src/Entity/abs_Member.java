@@ -1,6 +1,7 @@
 package Entity;
 
-import javax.naming.NoPermissionException;
+import Exception.NoPermissionException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /*
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  * abs_Member: abstract class which can save some information of each member object
  * @author: Seo, HyeongCheol
  */
-public abstract class abs_Member {
+public abstract class abs_Member implements Serializable {
     private String name;
     private Date birthday;
     private String email;
@@ -46,4 +47,11 @@ public abstract class abs_Member {
     public void addGroup(MemberPosition obj) { this.groupList.add(obj); }
     public abstract void addMember() throws NoPermissionException;
     public abstract void addTransaction() throws NoPermissionException;
+    @Override
+    public String toString() {
+        return "\nName: " + getName() +
+                "\nDate: " + getBirthday() +
+                "\nEmail: " + getEmail() +
+                "\nGroup: " + getGroupList();
+    }
 }
