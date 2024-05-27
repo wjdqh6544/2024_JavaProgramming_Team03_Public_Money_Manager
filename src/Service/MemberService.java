@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @author: Seo, HyeongCheol
  */
 public class MemberService {
-    private MemberList memberList;
+    private MemberList memberList = null;
     private abs_Member member;
     public ArrayList<abs_Member> findAllMember(){
         return memberList.getAllMemberList();
@@ -25,24 +25,22 @@ public class MemberService {
         for (abs_Member obj : allMemberList) {
             if (obj.getName().equals(name) && obj.getEmail().equals(email)) {
                 if (obj instanceof Administrator){
-                    return new Administrator(obj);
+                    return (Administrator) obj;
                 } else if (obj instanceof President){
-                    return new President(obj);
+                    return (President) obj;
                 } else {
-                    return new Member(obj);
+                    return (Member) obj;
                 }
 
             }
         }
         return null;
     }
-    public boolean createMember(String name, int year, int month, int day, String email) {
-        try {
-            abs_Member newMember = new Member(name, year, month, day, email);
-            memberList.addMemberToList(newMember);
-            return true;
-        } catch(Exception e) {
-            return false;
+    public void createMember(String name, int year, int month, int day, String email) {
+        Member newMember = new Member(name, year, month, day, email);
+        if (memberList.getAllMemberList() == null){
+            memberList = new MemberList();
         }
+        memberList.addMemberToList(newMember);
     }
 }

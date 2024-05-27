@@ -12,17 +12,8 @@ public class MemberList implements cloneArrayList{
     public MemberList() { // default constructor
         setAllMemberList(new ArrayList<abs_Member>());
     }
-    public MemberList(abs_Member... MemberObjList) { // constructor with parameter
-        setAllMemberList(new ArrayList<abs_Member>());
-        for (abs_Member memberObj : MemberObjList) {
-            if (memberObj instanceof Administrator){
-                addMemberToList(new Administrator(memberObj));
-            } else if (memberObj instanceof President){
-                addMemberToList(new President(memberObj));
-            } else {
-                addMemberToList((new Member(memberObj)));
-            }
-        }
+    public MemberList(ArrayList<abs_Member> MemberObjList) { // constructor with parameter
+        setAllMemberList(MemberObjList);
     }
     public MemberList(MemberList originArrList) { // copy constructor
         setAllMemberList(originArrList.getAllMemberList()); // Copied ArrayList
@@ -41,10 +32,9 @@ public class MemberList implements cloneArrayList{
         }
         return newArr;
     }
-    public ArrayList<abs_Member> getAllMemberList() { return cloneArrList(this.allMemberList); }
+    public ArrayList<abs_Member> getAllMemberList() { return this.allMemberList; }
     private void setAllMemberList(ArrayList<abs_Member> allMemberList) { this.allMemberList = allMemberList; }
     public void addMemberToList(abs_Member obj) {
-        // Setter 대신 Adder 추가. (리스트에 Member 추가)
         this.allMemberList.add(obj);
     }
 }

@@ -19,21 +19,19 @@ public class GroupService {
     private Group group;
     private Transaction transaction;
     private GroupList groupList;
-    public void addTransactionHistory(int year, int month, int day, String event, int income, int expense, boolean settlement, abs_Member[] memberObjList){
+    public void addTransactionHistory(int year, int month, int day, String event, int income, int expense, boolean settlement, ArrayList<abs_Member> memberObjList){
         Transaction transObj = new Transaction(year, month, day, event, income, expense, settlement, memberObjList);
         group.addTransaction(transObj);
     }
-    public void addMember(abs_Member obj){
-        group.addMember(new Member(obj));
+    public void addMember(abs_Member memberObj){
+        group.addMember(memberObj);
     }
-    public boolean createGroup(String name, abs_Member presidentObj) {
-        try {
-            Group newGroup = new Group(name, new President(presidentObj));
-            groupList.addGroupToList(newGroup);
-            return true;
-        } catch(Exception e) {
-            return false;
+    public void createGroup(String name, abs_Member presidentObj) {
+        Group newGroup = new Group(name, (President) presidentObj);
+        if (groupList.getAllGroupList() == null){
+            groupList = new GroupList();
         }
+        groupList.addGroupToList(newGroup);
     }
     public ArrayList<Group> findAllGroup() { return groupList.getAllGroupList(); }
 }

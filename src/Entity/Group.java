@@ -51,10 +51,10 @@ public class Group implements cloneArrayList{
         return newArr;
     }
     public String getGroupName() { return this.groupName; }
-    public President getPresident() {return new President(this.president); }
-    public ArrayList<abs_Member> getMemberList() { return cloneArrList(this.groupMemberList); }
+    public President getPresident() {return this.president; }
+    public ArrayList<abs_Member> getMemberList() { return this.groupMemberList; }
 
-    public ArrayList<Transaction> getTransactionList() { return cloneTransList(this.transactionList); }
+    public ArrayList<Transaction> getTransactionList() { return this.transactionList; }
 
     private void setGroupName(String name) { this.groupName = name; }
     private void setPresident(President president) { this.president = president; }

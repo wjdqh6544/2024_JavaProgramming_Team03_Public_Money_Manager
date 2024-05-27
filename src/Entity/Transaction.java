@@ -24,22 +24,13 @@ public class Transaction implements cloneArrayList {
         setMemberList(new ArrayList<abs_Member>());
         setFinishMember(new ArrayList<abs_Member>());
     }
-    public Transaction(int year, int month, int day, String event, int income, int expense, boolean settlement, abs_Member[] memberObjList) { // constructor with parameter
+    public Transaction(int year, int month, int day, String event, int income, int expense, boolean settlement, ArrayList<abs_Member> memberObjList) { // constructor with parameter
         setDate(new Date(year, month, day));
         setEvent(event);
         setIncome(income);
         setExpense(expense);
         setSettlement(settlement);
-        setMemberList(new ArrayList<abs_Member>());
-        for (abs_Member memberObj : memberObjList) {
-            if (memberObj instanceof Administrator){
-                addMember(new Administrator(memberObj));
-            } else if (memberObj instanceof President){
-                addMember(new President(memberObj));
-            } else {
-                addMember((new Member(memberObj)));
-            }
-        }
+        setMemberList(memberObjList);
         setFinishMember(new ArrayList<abs_Member>());
     }
     public Transaction(Transaction otherObj) { // copy constructor
@@ -48,7 +39,7 @@ public class Transaction implements cloneArrayList {
         setIncome(otherObj.getIncome());
         setExpense(otherObj.getExpense());
         setSettlement(otherObj.isSettlement());
-        setMemberList(otherObj.getMemberList()); // Copied ArrayList
+        setMemberList(otherObj.getMemberList());
         setFinishMember(otherObj.getFinishMember());
     }
     @Override
@@ -65,14 +56,14 @@ public class Transaction implements cloneArrayList {
         }
         return newArr;
     }
-    public Date getDate() { return new Date(this.date); }
+    public Date getDate() { return this.date; }
     public String getEvent() { return this.event; }
-    public ArrayList<abs_Member> getMemberList() { return cloneArrList(this.memberList); }
-    public ArrayList<abs_Member> getFinishMember() { return cloneArrList(this.finishMember); }
+    public ArrayList<abs_Member> getMemberList() { return this.memberList; }
+    public ArrayList<abs_Member> getFinishMember() { return this.finishMember; }
     public int getIncome() { return this.income; }
     public int getExpense() { return expense; }
     public boolean isSettlement() { return settlement; }
-    private void setDate(Date date) { this.date = new Date(date); }
+    private void setDate(Date date) { this.date = date; }
     private void setEvent(String event) { this.event = event; }
     private void setMemberList(ArrayList<abs_Member> memberList) { this.memberList = memberList; }
     private void setFinishMember(ArrayList<abs_Member> finishMember) { this.finishMember = finishMember; }
