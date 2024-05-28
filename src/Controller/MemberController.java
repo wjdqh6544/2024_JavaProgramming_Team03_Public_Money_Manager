@@ -2,7 +2,7 @@ package Controller;
 
 import Entity.abs_Member;
 import Service.MemberService;
-import Exception.MemberNotFoundException;
+import Exception.*;
 
 import java.util.ArrayList;
 
@@ -19,10 +19,20 @@ public class MemberController {
     public MemberController(){
     }
     public abs_Member findMemberByNameAndEmail(String name, String email){
-        return memberService.findMemberByNameAndEmail(name, email);
+        try {
+            return memberService.findMemberByNameAndEmail(name, email);
+        } catch (MemberNotFoundException e){
+            throw new MemberNotFoundException();
+        }
+
     }
     public void createMember(String name, int year, int month, int day, String email){
-        memberService.createMember(name, year, month, day, email);
+        try {
+            memberService.createMember(name, year, month, day, email);
+        } catch (DuplicatedEmailException e) {
+            throw new DuplicatedEmailException();
+        }
+
     }
     public ArrayList<abs_Member> findAllMember(){
         ArrayList<abs_Member> allMemberList = null;
@@ -30,11 +40,19 @@ public class MemberController {
              allMemberList = memberService.findAllMember();
         } catch (MemberNotFoundException e) {
             throw new MemberNotFoundException();
+        } catch (NullPointerException e) {
+            throw new NullPointerException();
         }
         return allMemberList;
     }
 
     public void setAllMemberList(ArrayList<abs_Member> allMemberList){
-        memberService.setAllMember(allMemberList);
+        try {
+            memberService.setAllMember(allMemberList);
+        } catch (NullPointerException e) {
+            throw new NullPointerException();
+        } catch (EmptyArrayListException e) {
+            throw new EmptyArrayListException();
+        }
     }
 }

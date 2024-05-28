@@ -4,8 +4,7 @@ import Entity.Date;
 import Entity.MemberList;
 import Entity.abs_Member;
 import Entity.Member;
-import Exception.DuplicatedEmailException;
-import Exception.MemberNotFoundException;
+import Exception.*;
 
 import java.util.ArrayList;
 /*
@@ -39,12 +38,19 @@ public class MemberService {
         return false;
     }
     public void setAllMember(ArrayList<abs_Member> allMemberList) {
+        if (allMemberList == null) {
+            throw new NullPointerException();
+        } else if (allMemberList.isEmpty() == true){
+            throw new EmptyArrayListException();
+        }
         memberList.setAllMemberList(allMemberList);
     }
     public ArrayList<abs_Member> findAllMember() throws MemberNotFoundException {
         ArrayList<abs_Member> allMemberList = memberList.getAllMemberList();
-        if (allMemberList == null){
-            throw new MemberNotFoundException();
+        if (allMemberList == null) {
+            throw new NullPointerException();
+        } else if (allMemberList.isEmpty() == true){
+            throw new EmptyArrayListException();
         }
         return allMemberList;
     }
