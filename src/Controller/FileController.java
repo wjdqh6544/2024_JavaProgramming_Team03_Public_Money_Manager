@@ -17,41 +17,45 @@ import java.util.ArrayList;
 public class FileController {
     private FileService fileService = new FileService();
     public ArrayList<Group> loadGroup(){
+        ArrayList<Group> allGroupList = null;
         try {
-            ArrayList<Group> allGroupList = fileService.readGroupList();
-            return allGroupList;
+            allGroupList = fileService.readGroupList();
         } catch (ObjectLoadException e){
-            System.err.println("File not loaded.");
-            return null;
+            throw new ObjectLoadException("Group");
+        } finally {
+            return allGroupList;
         }
     }
     public ArrayList<abs_Member> loadMember(){
+        ArrayList<abs_Member> allMemberList = null;
         try {
-            ArrayList<abs_Member> allMemberList = fileService.readMemberList();
-            return allMemberList;
+            allMemberList = fileService.readMemberList();
         } catch (ObjectLoadException e){
-            System.err.println("File not loaded.");
-            return null;
+            throw new ObjectLoadException("Member");
+        } finally {
+            return allMemberList;
         }
     }
     public boolean saveGroup(ArrayList<Group> allGroupList){
+        boolean status = false;
         try {
             fileService.saveGroupList(allGroupList);
-            return true;
+            status = true;
         } catch (ObjectSaveException e){
-            System.err.println("File not saved.");
-            return false;
+            throw new ObjectSaveException("Group");
+        } finally {
+            return status;
         }
     }
     public boolean saveMember(ArrayList<abs_Member> allMemberList){
+        boolean status = false;
         try {
             fileService.saveMemberList(allMemberList);
-            return true;
+            status = true;
         } catch(ObjectSaveException e){
-            System.err.println("File not saved.");
-            return false;
+            throw new ObjectSaveException("Member");
+        } finally {
+            return status;
         }
-
-
     }
 }

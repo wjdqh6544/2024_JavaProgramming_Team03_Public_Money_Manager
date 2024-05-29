@@ -19,12 +19,14 @@ public class MemberController {
     public MemberController(){
     }
     public abs_Member findMemberByNameAndEmail(String name, String email){
+        abs_Member res = null;
         try {
-            return memberService.findMemberByNameAndEmail(name, email);
-        } catch (MemberNotFoundException e){
+            res = memberService.findMemberByNameAndEmail(name, email);
+        } catch (MemberNotFoundException e) {
             throw new MemberNotFoundException();
+        } finally {
+            return res;
         }
-
     }
     public void createMember(String name, int year, int month, int day, String email){
         try {
@@ -42,8 +44,9 @@ public class MemberController {
             throw new MemberNotFoundException();
         } catch (NullPointerException e) {
             throw new NullPointerException();
+        } finally {
+            return allMemberList;
         }
-        return allMemberList;
     }
 
     public void setAllMemberList(ArrayList<abs_Member> allMemberList){

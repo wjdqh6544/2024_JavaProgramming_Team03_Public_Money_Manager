@@ -29,13 +29,18 @@ public class MemberService {
         }
     }
     public boolean emailExists(String email){
-        ArrayList<abs_Member> allMemberList = findAllMember();
-        for (abs_Member obj : allMemberList) {
-            if (obj.getEmail().equals(email)) {
-                return true;
+        try {
+            ArrayList<abs_Member> allMemberList = findAllMember();
+            for (abs_Member obj : allMemberList) {
+                if (obj.getEmail().equals(email)) {
+                    return true;
+                }
             }
+            return false;
+        } catch (EmptyArrayListException e) {
+            return false;
         }
-        return false;
+
     }
     public void setAllMember(ArrayList<abs_Member> allMemberList) {
         if (allMemberList == null) {
