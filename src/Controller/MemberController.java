@@ -18,6 +18,15 @@ public class MemberController {
     private MemberService memberService = new MemberService();
     public MemberController(){
     }
+    public void editMemberInfo(abs_Member memberObj, String email, int year, int month, int day){
+        try {
+            memberService.editEmail(memberObj, email);
+            memberService.editBirthDay(memberObj, year, month, day);
+        } catch (DuplicatedEmailException e){
+            throw new DuplicatedEmailException();
+        }
+    }
+
     public abs_Member findMemberByNameAndEmail(String name, String email){
         abs_Member res = null;
         try {

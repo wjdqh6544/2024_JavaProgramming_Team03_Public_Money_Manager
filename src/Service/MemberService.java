@@ -18,8 +18,10 @@ public class MemberService {
     private MemberList memberList = new MemberList();
     private abs_Member member;
     public MemberService(){}
-    public void editBirthDay(abs_Member memberObj, Date birthday){
-        memberObj.setBirthday(birthday);
+    public void editBirthDay(abs_Member memberObj, int year, int month, int day){
+        memberObj.getBirthday().setYear(year);
+        memberObj.getBirthday().setMonth(month);
+        memberObj.getBirthday().setDay(day);
     }
     public void editEmail(abs_Member memberObj, String email) throws DuplicatedEmailException {
         if (emailExists(email) == true){
