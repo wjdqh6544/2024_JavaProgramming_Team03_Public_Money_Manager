@@ -45,20 +45,20 @@ public class MemberController {
         }
 
     }
-    public ArrayList<abs_Member> findAllMember(){
+    public ArrayList<abs_Member> findAllMember() {
         ArrayList<abs_Member> allMemberList = null;
         try {
              allMemberList = memberService.findAllMember();
-        } catch (MemberNotFoundException e) {
-            throw new MemberNotFoundException();
         } catch (NullPointerException e) {
             throw new NullPointerException();
+        } catch (MemberNotFoundException e) {
+            throw new MemberNotFoundException();
         } finally {
             return allMemberList;
         }
     }
 
-    public void setAllMemberList(ArrayList<abs_Member> allMemberList){
+    public void setAllMemberList(ArrayList<abs_Member> allMemberList) {
         try {
             memberService.setAllMember(allMemberList);
         } catch (NullPointerException e) {

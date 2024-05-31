@@ -1,6 +1,7 @@
 package Service;
 
 import Entity.*;
+import Exception.*;
 
 import java.util.ArrayList;
 /*
@@ -31,5 +32,21 @@ public class GroupService {
         }
         groupList.addGroupToList(newGroup);
     }
-    public ArrayList<Group> findAllGroup() { return groupList.getAllGroupList(); }
+    public ArrayList<Group> findAllGroup() throws NullPointerException, EmptyArrayListException {
+        ArrayList<Group> allGroupList = groupList.getAllGroupList();
+        if (allGroupList == null) {
+            throw new NullPointerException();
+        } else if (allGroupList.isEmpty() == true) {
+            throw new EmptyArrayListException();
+        }
+        return allGroupList;
+    }
+    public void setAllGroup(ArrayList<Group> allGroupList) throws NullPointerException, EmptyArrayListException {
+        if (allGroupList == null){
+            throw new NullPointerException();
+        } else if (allGroupList.isEmpty() == true){
+            throw new EmptyArrayListException();
+        }
+        groupList.setAllGroupList(allGroupList);
+    }
 }

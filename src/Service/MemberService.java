@@ -30,7 +30,7 @@ public class MemberService {
             memberObj.setEmail(email);
         }
     }
-    public boolean emailExists(String email){
+    public boolean emailExists(String email) throws EmptyArrayListException {
         try {
             ArrayList<abs_Member> allMemberList = findAllMember();
             for (abs_Member obj : allMemberList) {
@@ -44,7 +44,7 @@ public class MemberService {
         }
 
     }
-    public void setAllMember(ArrayList<abs_Member> allMemberList) {
+    public void setAllMember(ArrayList<abs_Member> allMemberList) throws EmptyArrayListException, NullPointerException {
         if (allMemberList == null) {
             throw new NullPointerException();
         } else if (allMemberList.isEmpty() == true){
@@ -52,7 +52,7 @@ public class MemberService {
         }
         memberList.setAllMemberList(allMemberList);
     }
-    public ArrayList<abs_Member> findAllMember() throws MemberNotFoundException {
+    public ArrayList<abs_Member> findAllMember() throws MemberNotFoundException, NullPointerException {
         ArrayList<abs_Member> allMemberList = memberList.getAllMemberList();
         if (allMemberList == null) {
             throw new NullPointerException();
