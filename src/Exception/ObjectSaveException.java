@@ -7,7 +7,7 @@ package Exception;
  * @author: Seo, HyeongCheol
  */
 public class ObjectSaveException extends RuntimeException{
-    public ObjectSaveException(String str){
-        super("Failed to save all " + str + " list");
+    public ObjectSaveException(String str, String detail){
+        super("Failed to save all " + str + " list. | " + detail);
     }
 }

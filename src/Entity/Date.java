@@ -33,6 +33,17 @@ public class Date implements Serializable {
     public String toString(){
         return getYear() + ". " + getMonth() + ". " + getDay();
     }
+    @Override
+    public boolean equals(Object otherObj){
+        if (otherObj == null){
+            return false;
+        } else if ((otherObj instanceof Date) == false){
+            return false;
+        } else {
+            Date obj = (Date) otherObj;
+            return ((getYear() == obj.getYear()) && (getMonth() == obj.getMonth()) && (getDay() == obj.getDay()));
+        }
+    }
     public int getYear() { return this.year; }
     public int getMonth() { return this.month; }
     public int getDay() { return this.day; }

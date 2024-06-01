@@ -6,9 +6,9 @@ package Exception;
  * MemberNotFoundException: Exception called when try to find Member which not exists.
  * @author: Seo, HyeongCheol
  */
-public class MemberNotFoundException extends RuntimeException {
-    public MemberNotFoundException() {
-        super("Member does not exists.");
+public class NotFoundException extends RuntimeException {
+    public NotFoundException(String target) {
+        super(target + " does not exists.");
     }
 
 }

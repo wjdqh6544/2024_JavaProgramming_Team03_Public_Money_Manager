@@ -1,4 +1,5 @@
 package Entity;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
@@ -9,7 +10,7 @@ import java.util.TreeMap;
  * Group: class which can save some information of each Group object
  * @author: Seo, HyeongCheol
  */
-public class Group extends MapMethod {
+public class Group extends MapMethod implements Serializable {
     private String groupName;
     private President president;
     private Administrator administrator;
@@ -49,5 +50,8 @@ public class Group extends MapMethod {
     public void setAwaitMemberList(TreeMap<String, abs_Member> awaitMemberList) { this.awaitMemberList = awaitMemberList; }
     public void setTransactionList(ArrayList<Transaction> transactionList) { this.transactionList = transactionList; }
     public void addMember(abs_Member obj) { this.MemberList.put(getKey(obj), obj); }
+    public void addAwaitMember(abs_Member obj) { this.awaitMemberList.put(getKey(obj), obj); }
+    public void removeAwaitMember(abs_Member obj) { this.awaitMemberList.remove(getKey(obj)); }
+    public void removeMember(abs_Member obj) { this.MemberList.remove(getKey(obj)); }
     public void addTransaction(Transaction obj) { this.transactionList.add(obj); }
 }

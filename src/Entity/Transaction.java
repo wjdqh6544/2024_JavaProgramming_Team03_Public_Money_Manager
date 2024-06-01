@@ -1,4 +1,5 @@
 package Entity;
+import java.io.Serializable;
 import java.util.TreeMap;
 /*
  * COMP217: Java Programming / Team 03
@@ -7,7 +8,7 @@ import java.util.TreeMap;
  * Transaction: class which can save information of each transaction history
  * @author: Seo, HyeongCheol
  */
-public class Transaction extends MapMethod {
+public class Transaction extends MapMethod implements Serializable {
     private Date date;
     private String event;
     private TreeMap<String, abs_Member> memberList;

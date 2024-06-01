@@ -1,9 +1,7 @@
 package Entity;
-
 import Exception.NoPermissionException;
 import java.io.Serializable;
 import java.util.TreeMap;
-
 /*
  * COMP217: Java Programming / Team 03
  * Prof: Suh, Young-Kyoon
@@ -16,7 +14,6 @@ public abstract class abs_Member extends MapMethod implements Serializable {
     private Date birthday;
     private String email;
     private TreeMap<String, MemberPosition> groupList;
-
     public abs_Member(){
         setName("None");
         setBirthday(new Date());
@@ -35,7 +32,6 @@ public abstract class abs_Member extends MapMethod implements Serializable {
         setEmail(otherObj.getEmail());
         setGroupList(otherObj.getGroupList());
     }
-
     public String getName() { return this.name; }
     public Date getBirthday() { return this.birthday;}
     public String getEmail() { return this.email; }
@@ -45,13 +41,28 @@ public abstract class abs_Member extends MapMethod implements Serializable {
     public void setEmail(String email) { this.email = email; }
     public void setGroupList(TreeMap<String, MemberPosition> groupList) { this.groupList = groupList; }
     public void addGroup(MemberPosition obj) { this.groupList.put(getKey(obj), obj); }
-    public abstract void addMember() throws NoPermissionException;
-    public abstract void addTransaction() throws NoPermissionException;
+    public void removeGroup(Group groupObj){
+        this.groupList.remove(getKey(groupObj));
+    }
+    public abstract boolean canAddMember(String groupName) throws NoPermissionException;
+    public abstract boolean canAddTransaction(String groupName) throws NoPermissionException;
     @Override
     public String toString() {
-        return "\nName: " + getName() +
-                "\nDate: " + getBirthday() +
-                "\nEmail: " + getEmail() +
-                "\nGroup: " + getGroupList();
+        return " | Name: " + getName() +
+                " | Date: " + getBirthday() +
+                " | Email: " + getEmail() +
+                " | Group: " + getGroupList();
+    }
+
+    @Override
+    public boolean equals(Object otherObj){
+        if (otherObj == null){
+            return false;
+        } else if ((otherObj instanceof abs_Member) == false) {
+            return false;
+        } else {
+            abs_Member obj = (abs_Member) otherObj;
+            return (getName().equals(obj.getName()) && getBirthday().equals(obj.getBirthday()) && getEmail().equals(obj.getEmail()));
+        }
     }
 }

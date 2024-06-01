@@ -21,12 +21,12 @@ public class Member extends abs_Member {
     }
 
     @Override
-    public void addMember() throws NoPermissionException {
+    public boolean canAddMember(String groupName) throws NoPermissionException {
         throw new NoPermissionException();
     }
 
     @Override
-    public void addTransaction() throws NoPermissionException {
+    public boolean canAddTransaction(String groupName) throws NoPermissionException {
         throw new NoPermissionException();
     }
 }

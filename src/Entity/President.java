@@ -21,11 +21,19 @@ public class President extends abs_Member {
     }
 
     @Override
-    public void addMember() throws NoPermissionException {
+    public boolean canAddMember(String groupName) throws NoPermissionException {
+        MemberPosition obj = getGroupList().get(groupName);
+        if (obj == null) {
+            throw new NullPointerException();
+        } else if (obj.getPosition().equals(PositionList.PRESIDENT)) {
+            return true;
+        } else {
+            throw new NoPermissionException();
+        }
     }
 
     @Override
-    public void addTransaction() throws NoPermissionException {
+    public boolean canAddTransaction(String groupName) throws NoPermissionException {
         throw new NoPermissionException();
     }
 }

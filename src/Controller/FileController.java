@@ -1,4 +1,12 @@
 package Controller;
+import Entity.Group;
+import Entity.abs_Member;
+import Service.FileService;
+import Exception.ObjectSaveException;
+import Exception.ObjectLoadException;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.TreeMap;
 /*
  * COMP217: Java Programming / Team 03
  * Prof: Suh, Young-Kyoon
@@ -6,15 +14,6 @@ package Controller;
  * FileController: class which runs saving and loading all Member/Group Information.
  * @author: Seo, HyeongCheol
  */
-
-import Entity.Group;
-import Entity.abs_Member;
-import Service.FileService;
-import Exception.ObjectSaveException;
-import Exception.ObjectLoadException;
-import java.util.ArrayList;
-import java.util.TreeMap;
-
 public class FileController {
     private FileService fileService = new FileService();
     public TreeMap<String, Group> loadGroup(){
@@ -22,8 +21,12 @@ public class FileController {
         try {
             allGroupList = fileService.readGroupList();
             return allGroupList;
-        } catch (ObjectLoadException e){
-            throw new ObjectLoadException("Group");
+        } catch (FileNotFoundException e) {
+            throw new ObjectLoadException("Group", "File Not Found.");
+        } catch (ClassNotFoundException e) {
+            throw new ObjectLoadException("Group", "Class Typecasting Error.");
+        } catch (IOException e) {
+            throw new ObjectLoadException("Group", "I/O Exception.");
         }
     }
     public TreeMap<String, abs_Member> loadMember(){
@@ -31,24 +34,28 @@ public class FileController {
         try {
             allMemberList = fileService.readMemberList();
             return allMemberList;
-        } catch (ObjectLoadException e){
-            throw new ObjectLoadException("Member");
+        } catch (FileNotFoundException e) {
+            throw new ObjectLoadException("Member", "File Not Found.");
+        } catch (ClassNotFoundException e) {
+            throw new ObjectLoadException("Member", "Class Typecasting Error.");
+        } catch (IOException e) {
+            throw new ObjectLoadException("Member", "I/O Exception.");
         }
     }
     public boolean saveGroup(TreeMap<String, Group> allGroupList){
         try {
             fileService.saveGroupList(allGroupList);
             return true;
-        } catch (ObjectSaveException e){
-            throw new ObjectSaveException("Group");
+        } catch (IOException e){
+            throw new ObjectSaveException("Group", "I/O Exception.");
         }
     }
     public boolean saveMember(TreeMap<String, abs_Member> allMemberList){
         try {
             fileService.saveMemberList(allMemberList);
             return true;
-        } catch(ObjectSaveException e){
-            throw new ObjectSaveException("Member");
+        } catch(IOException e){
+            throw new ObjectSaveException("Group", "I/O Exception.");
         }
     }
 }
