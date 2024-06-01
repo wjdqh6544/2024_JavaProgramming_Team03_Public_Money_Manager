@@ -2,7 +2,7 @@ package Entity;
 
 import Exception.NoPermissionException;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.TreeMap;
 
 /*
  * COMP217: Java Programming / Team 03
@@ -11,40 +11,40 @@ import java.util.ArrayList;
  * abs_Member: abstract class which can save some information of each member object
  * @author: Seo, HyeongCheol
  */
-public abstract class abs_Member implements Serializable {
+public abstract class abs_Member extends MapMethod implements Serializable {
     private String name;
     private Date birthday;
     private String email;
-    private ArrayList<MemberPosition> groupList;
+    private TreeMap<String, MemberPosition> groupList;
 
     public abs_Member(){
         setName("None");
         setBirthday(new Date());
         setEmail("None");
-        setGroupList(new ArrayList<MemberPosition>());
+        setGroupList(new TreeMap<String, MemberPosition>());
     }
     public abs_Member(String name, int year, int month, int day, String email) { // Constructor with Parameters
         setName(name);
         setBirthday(new Date(year, month, day));
         setEmail(email);
-        setGroupList(new ArrayList<MemberPosition>());
+        setGroupList(new TreeMap<String, MemberPosition>());
     }
     public abs_Member(abs_Member otherObj){ // copy constructor
         setName(otherObj.getName());
-        setBirthday(otherObj.getBirthday()); // Copied Date Obj
+        setBirthday(otherObj.getBirthday());
         setEmail(otherObj.getEmail());
-        setGroupList(otherObj.getGroupList()); // Copied ArrayList
+        setGroupList(otherObj.getGroupList());
     }
 
     public String getName() { return this.name; }
     public Date getBirthday() { return this.birthday;}
     public String getEmail() { return this.email; }
-    public ArrayList<MemberPosition> getGroupList() { return this.groupList; }
+    public TreeMap<String, MemberPosition> getGroupList() { return this.groupList; }
     public void setName(String name) { this.name = name; }
     public void setBirthday(Date obj) { this.birthday = obj; }
     public void setEmail(String email) { this.email = email; }
-    public void setGroupList(ArrayList<MemberPosition> groupList) { this.groupList = groupList; }
-    public void addGroup(MemberPosition obj) { this.groupList.add(obj); }
+    public void setGroupList(TreeMap<String, MemberPosition> groupList) { this.groupList = groupList; }
+    public void addGroup(MemberPosition obj) { this.groupList.put(getKey(obj), obj); }
     public abstract void addMember() throws NoPermissionException;
     public abstract void addTransaction() throws NoPermissionException;
     @Override

@@ -3,7 +3,8 @@ package Service;
 import Entity.*;
 import Exception.*;
 
-import java.util.ArrayList;
+import java.util.TreeMap;
+
 /*
  * COMP217: Java Programming / Team 03
  * Prof: Suh, Young-Kyoon
@@ -18,7 +19,7 @@ public class GroupService {
     public void setGroupAdministrator(abs_Member memberObj) {
         group.setAdministrator((Administrator) memberObj);
     }
-    public void addTransactionHistory(int year, int month, int day, String event, int income, int expense, boolean settlement, ArrayList<abs_Member> memberObjList){
+    public void addTransactionHistory(int year, int month, int day, String event, int income, int expense, boolean settlement, TreeMap<String, abs_Member> memberObjList){
         Transaction transObj = new Transaction(year, month, day, event, income, expense, settlement, memberObjList);
         group.addTransaction(transObj);
     }
@@ -32,20 +33,20 @@ public class GroupService {
         }
         groupList.addGroupToList(newGroup);
     }
-    public ArrayList<Group> findAllGroup() throws NullPointerException, EmptyArrayListException {
-        ArrayList<Group> allGroupList = groupList.getAllGroupList();
+    public TreeMap<String, Group> findAllGroup() throws NullPointerException, EmptyMapException {
+        TreeMap<String, Group> allGroupList = groupList.getAllGroupList();
         if (allGroupList == null) {
             throw new NullPointerException();
         } else if (allGroupList.isEmpty() == true) {
-            throw new EmptyArrayListException();
+            throw new EmptyMapException();
         }
         return allGroupList;
     }
-    public void setAllGroup(ArrayList<Group> allGroupList) throws NullPointerException, EmptyArrayListException {
+    public void setAllGroup(TreeMap<String, Group> allGroupList) throws NullPointerException, EmptyMapException {
         if (allGroupList == null){
             throw new NullPointerException();
         } else if (allGroupList.isEmpty() == true){
-            throw new EmptyArrayListException();
+            throw new EmptyMapException();
         }
         groupList.setAllGroupList(allGroupList);
     }

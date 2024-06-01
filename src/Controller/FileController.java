@@ -13,49 +13,42 @@ import Service.FileService;
 import Exception.ObjectSaveException;
 import Exception.ObjectLoadException;
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 public class FileController {
     private FileService fileService = new FileService();
-    public ArrayList<Group> loadGroup(){
-        ArrayList<Group> allGroupList = null;
+    public TreeMap<String, Group> loadGroup(){
+        TreeMap<String, Group> allGroupList = null;
         try {
             allGroupList = fileService.readGroupList();
+            return allGroupList;
         } catch (ObjectLoadException e){
             throw new ObjectLoadException("Group");
-        } finally {
-            return allGroupList;
         }
     }
-    public ArrayList<abs_Member> loadMember(){
-        ArrayList<abs_Member> allMemberList = null;
+    public TreeMap<String, abs_Member> loadMember(){
+        TreeMap<String, abs_Member> allMemberList = null;
         try {
             allMemberList = fileService.readMemberList();
+            return allMemberList;
         } catch (ObjectLoadException e){
             throw new ObjectLoadException("Member");
-        } finally {
-            return allMemberList;
         }
     }
-    public boolean saveGroup(ArrayList<Group> allGroupList){
-        boolean status = false;
+    public boolean saveGroup(TreeMap<String, Group> allGroupList){
         try {
             fileService.saveGroupList(allGroupList);
-            status = true;
+            return true;
         } catch (ObjectSaveException e){
             throw new ObjectSaveException("Group");
-        } finally {
-            return status;
         }
     }
-    public boolean saveMember(ArrayList<abs_Member> allMemberList){
-        boolean status = false;
+    public boolean saveMember(TreeMap<String, abs_Member> allMemberList){
         try {
             fileService.saveMemberList(allMemberList);
-            status = true;
+            return true;
         } catch(ObjectSaveException e){
             throw new ObjectSaveException("Member");
-        } finally {
-            return status;
         }
     }
 }

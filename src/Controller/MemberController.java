@@ -3,8 +3,7 @@ package Controller;
 import Entity.abs_Member;
 import Service.MemberService;
 import Exception.*;
-
-import java.util.ArrayList;
+import java.util.TreeMap;
 
 /*
  * COMP217: Java Programming / Team 03
@@ -27,14 +26,13 @@ public class MemberController {
         }
     }
 
-    public abs_Member findMemberByNameAndEmail(String name, String email){
+    public abs_Member findMemberByNameAndEmail(String name, String email) throws MemberNotFoundException {
         abs_Member res = null;
         try {
             res = memberService.findMemberByNameAndEmail(name, email);
+            return res;
         } catch (MemberNotFoundException e) {
             throw new MemberNotFoundException();
-        } finally {
-            return res;
         }
     }
     public void createMember(String name, int year, int month, int day, String email){
@@ -45,26 +43,25 @@ public class MemberController {
         }
 
     }
-    public ArrayList<abs_Member> findAllMember() {
-        ArrayList<abs_Member> allMemberList = null;
+    public TreeMap<String, abs_Member> findAllMember() {
+        TreeMap<String, abs_Member> allMemberList = null;
         try {
              allMemberList = memberService.findAllMember();
+             return allMemberList;
         } catch (NullPointerException e) {
             throw new NullPointerException();
         } catch (MemberNotFoundException e) {
             throw new MemberNotFoundException();
-        } finally {
-            return allMemberList;
         }
     }
 
-    public void setAllMemberList(ArrayList<abs_Member> allMemberList) {
+    public void setAllMemberList(TreeMap<String, abs_Member> allMemberList) {
         try {
             memberService.setAllMember(allMemberList);
         } catch (NullPointerException e) {
             throw new NullPointerException();
-        } catch (EmptyArrayListException e) {
-            throw new EmptyArrayListException();
+        } catch (EmptyMapException e) {
+            throw new EmptyMapException();
         }
     }
 }

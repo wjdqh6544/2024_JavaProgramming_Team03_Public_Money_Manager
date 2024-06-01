@@ -7,6 +7,7 @@ import Exception.ObjectLoadException;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 /*
  * COMP217: Java Programming / Team 03
@@ -21,11 +22,11 @@ public class FileService implements Serializable {
     private final String GROUP_FILE_NAME = "allGroupList.dat";
 
     public FileService(){ }
-    public ArrayList<abs_Member> readMemberList() throws ObjectLoadException {
+    public TreeMap<String, abs_Member> readMemberList() throws ObjectLoadException {
         try {
-            ArrayList<abs_Member> allMemberList;
+            TreeMap<String, abs_Member> allMemberList;
             ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(FILE_DIR + MEMBER_FILE_NAME));
-            allMemberList = (ArrayList<abs_Member>) inputStream.readObject();
+            allMemberList = (TreeMap<String, abs_Member>) inputStream.readObject();
             inputStream.close();
             return allMemberList;
         } catch (FileNotFoundException e){
@@ -39,11 +40,11 @@ public class FileService implements Serializable {
             throw new ObjectSaveException("Group");
         }
     }
-    public ArrayList<Group> readGroupList() throws ObjectLoadException {
+    public TreeMap<String, Group> readGroupList() throws ObjectLoadException {
         try{
-            ArrayList<Group> allGroupList;
+            TreeMap<String, Group> allGroupList;
             ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(FILE_DIR + GROUP_FILE_NAME));
-            allGroupList = (ArrayList<Group>) inputStream.readObject();
+            allGroupList = (TreeMap<String, Group>) inputStream.readObject();
             inputStream.close();
             return allGroupList;
         } catch (FileNotFoundException e){
@@ -57,7 +58,7 @@ public class FileService implements Serializable {
             throw new ObjectSaveException("Group");
         }
     }
-    public void saveMemberList(ArrayList<abs_Member> allMemberList) throws ObjectSaveException {
+    public void saveMemberList(TreeMap<String, abs_Member> allMemberList) throws ObjectSaveException {
         try {
             ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(FILE_DIR + MEMBER_FILE_NAME));
             outputStream.writeObject(allMemberList);
@@ -68,7 +69,7 @@ public class FileService implements Serializable {
         }
     }
 
-    public void saveGroupList(ArrayList<Group> allGroupList) throws ObjectSaveException {
+    public void saveGroupList(TreeMap<String, Group> allGroupList) throws ObjectSaveException {
         try {
             ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(FILE_DIR + GROUP_FILE_NAME));
             outputStream.writeObject(allGroupList);

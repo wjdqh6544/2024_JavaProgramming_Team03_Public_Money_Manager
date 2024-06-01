@@ -3,7 +3,7 @@ package Service;
 import Entity.Transaction;
 import Entity.abs_Member;
 
-import java.util.ArrayList;
+import java.util.TreeMap;
 
 /*
  * COMP217: Java Programming / Team 03
@@ -17,10 +17,10 @@ public class TransactionService {
     public void addFinishMember(abs_Member obj){
         transaction.addFinishMember(obj);
     }
-    public ArrayList<abs_Member> findAllFinishMember() {
+    public TreeMap<String, abs_Member> findAllFinishMember() {
         return transaction.getFinishMember();
     }
-    public ArrayList<abs_Member> findAllMember(){
+    public TreeMap<String, abs_Member> findAllMember(){
         return transaction.getMemberList();
     }
     public int findExpensePerPeople(Transaction transObj) {

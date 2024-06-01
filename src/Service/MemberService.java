@@ -1,12 +1,14 @@
 package Service;
 
-import Entity.Date;
 import Entity.MemberList;
 import Entity.abs_Member;
 import Entity.Member;
 import Exception.*;
 
-import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
+
 /*
  * COMP217: Java Programming / Team 03
  * Prof: Suh, Young-Kyoon
@@ -30,42 +32,46 @@ public class MemberService {
             memberObj.setEmail(email);
         }
     }
-    public boolean emailExists(String email) throws EmptyArrayListException {
+    public boolean emailExists(String email) throws EmptyMapException {
         try {
-            ArrayList<abs_Member> allMemberList = findAllMember();
-            for (abs_Member obj : allMemberList) {
-                if (obj.getEmail().equals(email)) {
+            TreeMap<String, abs_Member> allMemberList = findAllMember();
+            Iterator<Map.Entry<String, abs_Member>> iter = allMemberList.entrySet().iterator();
+            while (iter.hasNext() == true) {
+                Map.Entry<String, abs_Member> obj = iter.next();
+                if (obj.getValue().getEmail().equals(email)) {
                     return true;
                 }
             }
             return false;
-        } catch (EmptyArrayListException e) {
+        } catch (EmptyMapException e) {
             return false;
         }
 
     }
-    public void setAllMember(ArrayList<abs_Member> allMemberList) throws EmptyArrayListException, NullPointerException {
+    public void setAllMember(TreeMap<String, abs_Member> allMemberList) throws EmptyMapException, NullPointerException {
         if (allMemberList == null) {
             throw new NullPointerException();
         } else if (allMemberList.isEmpty() == true){
-            throw new EmptyArrayListException();
+            throw new EmptyMapException();
         }
         memberList.setAllMemberList(allMemberList);
     }
-    public ArrayList<abs_Member> findAllMember() throws MemberNotFoundException, NullPointerException {
-        ArrayList<abs_Member> allMemberList = memberList.getAllMemberList();
+    public TreeMap<String, abs_Member> findAllMember() throws MemberNotFoundException, NullPointerException {
+        TreeMap<String, abs_Member> allMemberList = memberList.getAllMemberList();
         if (allMemberList == null) {
             throw new NullPointerException();
         } else if (allMemberList.isEmpty() == true){
-            throw new EmptyArrayListException();
+            throw new EmptyMapException();
         }
         return allMemberList;
     }
     public abs_Member findMemberByNameAndEmail(String name, String email) throws MemberNotFoundException {
-        ArrayList<abs_Member> allMemberList = memberList.getAllMemberList();
-        for (abs_Member obj : allMemberList) {
-            if (obj.getName().equals(name) && obj.getEmail().equals(email)) {
-                return obj;
+        TreeMap<String, abs_Member> allMemberList = memberList.getAllMemberList();
+        Iterator<Map.Entry<String, abs_Member>> iter = allMemberList.entrySet().iterator();
+        while (iter.hasNext() == true) {
+            Map.Entry<String, abs_Member> obj = iter.next();
+            if (obj.getValue().getName().equals(name) && obj.getValue().getEmail().equals(email)) {
+                return obj.getValue();
             }
         }
         throw new MemberNotFoundException();
