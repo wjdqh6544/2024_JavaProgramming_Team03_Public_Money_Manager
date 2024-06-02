@@ -31,7 +31,18 @@ public class Date implements Serializable {
 
     @Override
     public String toString(){
-        return getYear() + ". " + getMonth() + ". " + getDay();
+        String res = getYear() + ". ";
+        if (getMonth() <= 9){
+            res += "0" + getMonth() + ". ";
+        }else {
+            res += getMonth() + ". ";
+        }
+        if (getDay() <= 9){
+            res += "0" + getDay();
+        }else {
+            res += getDay();
+        }
+        return res;
     }
     @Override
     public boolean equals(Object otherObj){

@@ -1,6 +1,8 @@
 package Service;
 import Entity.*;
 import Exception.*;
+
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
@@ -14,6 +16,13 @@ import java.util.TreeMap;
 public class GroupService {
     private MemberService memberService = new MemberService();
     private GroupList groupList = new GroupList();
+    public ArrayList<Transaction> findAllTransaction(Group groupObj) throws NullPointerException {
+        try {
+            return groupObj.getTransactionList();
+        } catch (NullPointerException e){
+            throw e;
+        }
+    }
     public Group findGroupByName(String name) throws NullPointerException, NotFoundException {
         try {
             TreeMap<String, Group> allGroupList = groupList.getAllGroupList();
@@ -63,8 +72,13 @@ public class GroupService {
         }
 
     }
-    public void addTransactionHistory(Group groupObj, int year, int month, int day, String event, int income, int expense, boolean settlement, TreeMap<String, abs_Member> memberObjList){
-        Transaction transObj = new Transaction(year, month, day, event, income, expense, settlement, memberObjList);
+    public void addTransactionHistory(Group groupObj, int year, int month, int day, String event, int income, int expense, ArrayList<abs_Member> memberObjList) throws NotFoundException {
+        if (memberObjList.isEmpty() == true){
+            throw new NotFoundException("Member subject to settlement");
+        } else if (event.replaceAll(" ", "").isEmpty() == true) {
+            throw new NotFoundException("TransAction event");
+        }
+        Transaction transObj = new Transaction(year, month, day, event, income, expense, memberObjList);
         groupObj.addTransaction(transObj);
     }
     public void removeAwaitMember(Group groupObj, abs_Member memberObj) throws NotFoundException {

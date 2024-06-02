@@ -13,7 +13,7 @@ import java.util.TreeMap;
  * @author: Seo, HyeongCheol
  */
 public class MemberController {
-    private MemberService memberService = new MemberService();
+    private final MemberService memberService = new MemberService();
     public MemberController(){
     }
     public void addGroup(abs_Member memberObj, String groupName){

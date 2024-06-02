@@ -15,7 +15,7 @@ import java.util.TreeMap;
  * @author: Seo, HyeongCheol
  */
 public class FileController {
-    private FileService fileService = new FileService();
+    private final FileService fileService = new FileService();
     public TreeMap<String, Group> loadGroup(){
         TreeMap<String, Group> allGroupList = null;
         try {

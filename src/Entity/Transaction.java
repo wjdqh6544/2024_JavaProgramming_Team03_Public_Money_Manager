@@ -1,5 +1,6 @@
 package Entity;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.TreeMap;
 /*
  * COMP217: Java Programming / Team 03
@@ -25,13 +26,16 @@ public class Transaction extends MapMethod implements Serializable {
         setMemberList(new TreeMap<String, abs_Member>());
         setFinishMember(new TreeMap<String, abs_Member>());
     }
-    public Transaction(int year, int month, int day, String event, int income, int expense, boolean settlement, TreeMap<String, abs_Member> memberObjList) { // constructor with parameter
+    public Transaction(int year, int month, int day, String event, int income, int expense, ArrayList<abs_Member> memberObjList) { // constructor with parameter
         setDate(new Date(year, month, day));
         setEvent(event);
         setIncome(income);
         setExpense(expense);
-        setSettlement(settlement);
-        setMemberList(memberObjList);
+        setSettlement(false);
+        setMemberList(new TreeMap<String, abs_Member>());
+        for (abs_Member obj : memberObjList){
+            addMember(obj);
+        }
         setFinishMember(new TreeMap<String, abs_Member>());
     }
     public Transaction(Transaction otherObj) { // copy constructor
@@ -43,7 +47,11 @@ public class Transaction extends MapMethod implements Serializable {
         setMemberList(otherObj.getMemberList());
         setFinishMember(otherObj.getFinishMember());
     }
-
+    @Override
+    public String toString(){
+        return "Date: " + getDate() + " | Event: " + getEvent() + " | Income: " + getIncome() + " | Expense: " + getExpense() +
+                " | Settlement: " + isSettlement() + "\n\t MemberList: " + getMemberList() + "\n\t FinishMember: " + getFinishMember() + "\n";
+    }
     public Date getDate() { return this.date; }
     public String getEvent() { return this.event; }
     public TreeMap<String, abs_Member> getMemberList() { return this.memberList; }
@@ -60,4 +68,5 @@ public class Transaction extends MapMethod implements Serializable {
     public void setSettlement(boolean settlement) { this.settlement = settlement; }
     public void addMember(abs_Member obj) { this.memberList.put(getKey(obj), obj); }
     public void addFinishMember(abs_Member obj) { this.finishMember.put(getKey(obj), obj); }
+    public void removeMember(abs_Member obj) { this.memberList.remove(getKey(obj)); }
 }

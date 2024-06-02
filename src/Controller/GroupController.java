@@ -3,7 +3,7 @@ import Entity.*;
 import Exception.*;
 import Service.GroupService;
 
-import javax.jws.soap.SOAPBinding;
+import java.util.ArrayList;
 import java.util.TreeMap;
 /*
  * COMP217: Java Programming / Team 03
@@ -13,8 +13,22 @@ import java.util.TreeMap;
  * @author: Seo, HyeongCheol
  */
 public class GroupController {
-    private GroupService groupService = new GroupService();
+    private final GroupService groupService = new GroupService();
     public GroupController(){}
+    public ArrayList<Transaction> findAllTransaction(Group groupObj) {
+        try {
+            return groupService.findAllTransaction(groupObj);
+        } catch (NullPointerException e){
+            throw e;
+        }
+    }
+    public void addTransactionHistory(Group groupObj, int year, int month, int day, String event, int income, int expense, ArrayList<abs_Member> memberObjList) {
+        try {
+            groupService.addTransactionHistory(groupObj, year, month, day, event, income, expense, memberObjList);
+        } catch (NotFoundException e){
+            throw e;
+        }
+    }
     public void setAdministrator(Group groupObj, abs_Member memberObj){
         try {
             groupService.setGroupAdministrator(groupObj, memberObj);
