@@ -51,8 +51,13 @@ public class GroupService {
             memberService.removeGroup(memberObj, groupObj);
             memberService.addGroup(memberObj, new MemberPosition(groupObj.getGroupName(), PositionList.ADMINISTRATOR));
             groupObj.setAdministrator(new Administrator(memberObj));
-            groupObj.removeMember(memberObj);
-            groupObj.addMember(memberObj);
+            TreeMap<String, Group> allGroupList = findAllGroup();
+            Iterator<Map.Entry<String, Group>> iter = allGroupList.entrySet().iterator();
+            while (iter.hasNext() == true) {
+                Group obj = iter.next().getValue();
+                obj.removeMember(memberObj);
+                obj.addMember(memberObj);
+            }
         } catch (NotFoundException e) {
             throw e;
         }
