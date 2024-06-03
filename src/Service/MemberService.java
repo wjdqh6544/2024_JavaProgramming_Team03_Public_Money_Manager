@@ -16,7 +16,6 @@ import java.util.TreeMap;
  */
 public class MemberService {
     private MemberList memberList = new MemberList();
-    private abs_Member member;
     public MemberService(){}
     public void removeGroup(abs_Member memberObj, Group groupObj) throws NotFoundException {
         TreeMap<String, MemberPosition> posList = memberObj.getGroupList();
