@@ -16,6 +16,18 @@ import java.util.TreeMap;
  */
 public class FileController {
     private final FileService fileService = new FileService();
+    public void existFileAndInitializer() throws IOException{
+        try {
+            if (fileService.existMemberListFile() == false) {
+                fileService.saveMemberList(new TreeMap<String, abs_Member>());
+            }
+            if (fileService.existGroupListFile() == false){
+                fileService.saveGroupList(new TreeMap<String, Group>());
+            }
+        }catch (IOException e){
+            throw e;
+        }
+    }
     public TreeMap<String, Group> loadGroup(){
         TreeMap<String, Group> allGroupList = null;
         try {

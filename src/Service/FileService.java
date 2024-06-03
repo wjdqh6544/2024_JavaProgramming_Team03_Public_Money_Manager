@@ -15,6 +15,14 @@ public class FileService implements Serializable {
     private final String MEMBER_FILE_NAME = "allMemberList.dat";
     private final String GROUP_FILE_NAME = "allGroupList.dat";
     public FileService(){ }
+    public boolean existGroupListFile(){
+        File file = new File(FILE_DIR + GROUP_FILE_NAME);
+        return file.exists();
+    }
+    public boolean existMemberListFile() {
+        File file = new File(FILE_DIR + MEMBER_FILE_NAME);
+        return file.exists();
+    }
     public TreeMap<String, abs_Member> readMemberList() throws FileNotFoundException, ClassNotFoundException, IOException {
         try {
             TreeMap<String, abs_Member> allMemberList;
@@ -50,7 +58,6 @@ public class FileService implements Serializable {
             throw e;
         }
     }
-
     public void saveGroupList(TreeMap<String, Group> allGroupList) throws IOException {
         try {
             ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(FILE_DIR + GROUP_FILE_NAME));
