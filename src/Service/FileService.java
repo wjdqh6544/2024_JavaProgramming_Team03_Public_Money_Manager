@@ -1,7 +1,13 @@
 package Service;
 import Entity.Group;
 import Entity.abs_Member;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+
 import java.io.*;
+import java.util.Iterator;
 import java.util.TreeMap;
 /*
  * COMP217: Java Programming / Team 03
@@ -14,7 +20,29 @@ public class FileService implements Serializable {
     private final String FILE_DIR = "./src/";
     private final String MEMBER_FILE_NAME = "allMemberList.dat";
     private final String GROUP_FILE_NAME = "allGroupList.dat";
+    private final String CONN_INFO_FILE_NAME = "connectionInfo.json";
     public FileService(){ }
+    public TreeMap<String, String> readConnInfoFile() throws FileNotFoundException, IOException, ParseException {
+        try {
+            JSONParser parser = new JSONParser();
+            Reader jsonFile = new FileReader(FILE_DIR + CONN_INFO_FILE_NAME);
+            JSONObject jsonObj = (JSONObject) parser.parse(jsonFile);
+            TreeMap<String, String> conData = new TreeMap<String, String >();
+            Iterator iter = jsonObj.keySet().iterator();
+            while (iter.hasNext() == true) {
+                String key = (String) iter.next();
+                conData.put(key, (String) jsonObj.get(key));
+            }
+            jsonFile.close();
+            return conData;
+        } catch (FileNotFoundException e){
+            throw e;
+        } catch (IOException e) {
+            throw e;
+        } catch (ParseException e) {
+            throw e;
+        }
+    }
     public boolean existGroupListFile(){
         File file = new File(FILE_DIR + GROUP_FILE_NAME);
         return file.exists();

@@ -4,6 +4,8 @@ import Entity.abs_Member;
 import Service.FileService;
 import Exception.ObjectSaveException;
 import Exception.ObjectLoadException;
+import org.json.simple.parser.ParseException;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.TreeMap;
@@ -16,6 +18,19 @@ import java.util.TreeMap;
  */
 public class FileController {
     private final FileService fileService = new FileService();
+    public TreeMap<String, String> loadConnectionInfo() {
+        TreeMap<String, String> conData = null;
+        try {
+            conData = fileService.readConnInfoFile();
+            return conData;
+        } catch (FileNotFoundException e) {
+            throw new ObjectLoadException("Connection Info", "File Not Found.");
+        } catch (IOException e) {
+            throw new ObjectLoadException("Connection Info", "File Reading Error.");
+        } catch (ParseException e) {
+            throw new ObjectLoadException("Connection Info", "Parse Error.");
+        }
+    }
     public void existFileAndInitializer() throws IOException{
         try {
             if (fileService.existMemberListFile() == false) {

@@ -1,6 +1,9 @@
 package Entity;
-
 import java.io.Serializable;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.TextStyle;
+import java.util.Locale;
 
 /*
  * COMP217: Java Programming / Team 03
@@ -31,17 +34,20 @@ public class Date implements Serializable {
 
     @Override
     public String toString(){
-        String res = getYear() + ". ";
+        LocalDate date = LocalDate.of(getYear(), getMonth(), getDay());
+        DayOfWeek dayOfWeek = date.getDayOfWeek();
+        String res = getYear() + "년 ";
         if (getMonth() <= 9){
-            res += "0" + getMonth() + ". ";
+            res += "0" + getMonth() + "월 ";
         }else {
-            res += getMonth() + ". ";
+            res += getMonth() + "월 ";
         }
         if (getDay() <= 9){
-            res += "0" + getDay();
+            res += "0" + getDay() + "일 ";
         }else {
-            res += getDay();
+            res += getDay() + "일 ";
         }
+        res += dayOfWeek.getDisplayName(TextStyle.FULL, Locale.KOREAN);
         return res;
     }
     @Override

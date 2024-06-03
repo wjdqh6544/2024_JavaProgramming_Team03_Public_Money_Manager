@@ -1,0 +1,7 @@
+{
+    "mail_host": "111.111.111.111",
+    "mail_host_port": "587",
+    "mail_user_id": "<userId>@<Domain>",
+    "mail_user_pw": "<password>",
+    "sender": "Team03_COMP0217"
+}

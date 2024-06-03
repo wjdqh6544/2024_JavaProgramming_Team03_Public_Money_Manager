@@ -6,7 +6,9 @@ import Entity.abs_Member;
 import Service.GroupService;
 import Service.TransactionService;
 import Exception.*;
-
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
@@ -22,6 +24,19 @@ public class TransactionController {
     private final TransactionService transactionService = new TransactionService();
     private final GroupService groupService = new GroupService();
     public TransactionController(){}
+    public void sendEmailToMember(Group groupObj, Transaction transObj) throws AddressException, MessagingException, UnsupportedEncodingException {
+        try {
+            transactionService.sendEmailToMember(groupObj, transObj);
+        } catch (UnsupportedEncodingException e) {
+            throw e;
+        } catch (AddressException e) {
+            throw e;
+        } catch (MessagingException e) {
+            throw e;
+        } catch (ObjectLoadException e){
+            throw e;
+        }
+    }
     public int findExpensePerPerson(Transaction transObj){
         try {
             return transactionService.findExpensePerPerson(transObj);
