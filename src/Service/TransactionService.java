@@ -1,5 +1,6 @@
 package Service;
 import Controller.FileController;
+import Controller.TransactionController;
 import Entity.Group;
 import Entity.Transaction;
 import Entity.abs_Member;
@@ -19,6 +20,7 @@ import javax.mail.internet.MimeMessage;
  */
 public class TransactionService {
     private final FileController fileController = new FileController();
+    public TransactionService() {}
     public void sendEmailToMember(Group groupObj, Transaction transObj) throws AddressException, MessagingException, UnsupportedEncodingException {
         int count = 0;
         try {

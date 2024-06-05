@@ -18,6 +18,7 @@ import java.util.TreeMap;
  */
 public class FileController {
     private final FileService fileService = new FileService();
+    public FileController(){}
     public TreeMap<String, String> loadConnectionInfo() {
         TreeMap<String, String> conData = null;
         try {
