@@ -60,11 +60,11 @@ public class TransactionService {
         String res = "";
         int cnt = 0;
         res += "\"" + groupObj.getGroupName() + " (대표: " + groupObj.getPresident().getName() + ")\" 회원 여러분 안녕하세요.\n\n" +
-                transObj.getDate() + "에 공금 지출이 발생하였으며, 총무(" + groupObj.getAdministrator().getName() + ")가 정산을 요청하였습니다." +
+                transObj.getDate() + "에 공금 지출이 발생하였으며, 총무(" + groupObj.getAdministrator().getName() + ")가 정산을 요청하   였습니다." +
                 "\n\n아래 내역을 확인하시고, 문제가 없다면 정산해 주시기 바랍니다.\n\n" +
-                "\t- 지출일자: " + transObj.getDate() + "\n\t- 지출내용: " + transObj.getEvent() + "\n\t- 지출금액: " + transObj.getExpense() +
+                "\t- 지출일자: " + transObj.getDate() + "\n\t- 지출내용: " + transObj.getEvent() + "\n\t- 전체 지출금액: " + transObj.getExpense() + " 원" +
                 "\n\t- 정산인원: " + (transObj.getMemberList().size() + transObj.getFinishMember().size()) + "명" +
-                "\n\t- 정산 대상자 (미정산 인원): \n\t\t";
+                "\n\t- 1인당 정산 금액: " + findExpensePerPerson(transObj) + " 원" + "\n\t- 정산 대상자 (미정산 인원): \n\t\t";
         TreeMap<String, abs_Member> list = transObj.getMemberList();
         Iterator<Map.Entry<String,abs_Member>> iter = list.entrySet().iterator();
         while (iter.hasNext() == true) {
