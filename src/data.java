@@ -25,8 +25,6 @@ public class data {
     GroupController groupController = new GroupController();
     MemberController memberController = new MemberController();
     TransactionController transactionController = new TransactionController();
-    private TreeMap<String, abs_Member> allMemberList = null;
-    private TreeMap<String, Group> allGroupList = null;
     private abs_Member sessionMember;
     private Group sessionGroup;
     private Transaction sessionTrans;
@@ -35,12 +33,12 @@ public class data {
 
     public void initialization() throws ObjectLoadException{
         fileController.fileInitializer();
-        allMemberList = fileController.loadMember();
-        allGroupList = fileController.loadGroup();
+        fileController.loadMember();
+        fileController.loadGroup();
     }
     public void saveAndUploadFile() throws ObjectSaveException, JSchException, SftpException, IOException {
-        fileController.saveMember(this.allMemberList);
-        fileController.saveGroup(this.allGroupList);
+        fileController.saveMember(memberController.findAllMember());
+        fileController.saveGroup(groupController.findAllGroup());
         fileController.uploadDataFile();
     }
     public void login(String name, String email) throws NotFoundException {
