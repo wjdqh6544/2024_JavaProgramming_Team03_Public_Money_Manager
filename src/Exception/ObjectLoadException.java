@@ -1,4 +1,5 @@
 package Exception;
+
 /*
  * COMP217: Java Programming / Team 03
  * Prof: Suh, Young-Kyoon
@@ -7,7 +8,7 @@ package Exception;
  * @author: Seo, HyeongCheol
  */
 public class ObjectLoadException extends RuntimeException {
-    public ObjectLoadException(String str, String detail){
+    public ObjectLoadException(String str, String detail) {
         super("Failed to load all " + str + " list. | " + detail);
     }
 }

@@ -1,4 +1,5 @@
 package Exception;
+
 /*
  * COMP217: Java Programming / Team 03
  * Prof: Suh, Young-Kyoon
@@ -10,5 +11,4 @@ public class NotFoundException extends RuntimeException {
     public NotFoundException(String target) {
         super(target + " does not exists.");
     }
-
 }
