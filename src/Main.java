@@ -16,7 +16,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
-
+/*
+ * COMP217: Java Programming / Team 03
+ * Prof: Suh, Young-Kyoon
+ *
+ * Main: class for testing.
+ * @author: Seo, HyeongCheol
+ */
 public class Main {
     private final GroupController groupController = new GroupController();
     private final MemberController memberController = new MemberController();

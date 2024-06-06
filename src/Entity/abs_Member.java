@@ -1,5 +1,4 @@
 package Entity;
-import Exception.NoPermissionException;
 import java.io.Serializable;
 import java.util.TreeMap;
 /*
@@ -44,8 +43,6 @@ public abstract class abs_Member extends MapMethod implements Serializable {
     public void removeGroup(Group groupObj){
         this.groupList.remove(getKey(groupObj));
     }
-    public abstract boolean canAddMember(String groupName) throws NoPermissionException;
-    public abstract boolean canAddTransaction(String groupName) throws NoPermissionException;
     @Override
     public String toString() {
         return " | Name: " + getName() +
@@ -61,8 +58,7 @@ public abstract class abs_Member extends MapMethod implements Serializable {
         } else if ((otherObj instanceof abs_Member) == false) {
             return false;
         } else {
-            abs_Member obj = (abs_Member) otherObj;
-            return (getName().equals(obj.getName()) && getBirthday().equals(obj.getBirthday()) && getEmail().equals(obj.getEmail()));
+            return getKey(otherObj).equals(getName() + getEmail());
         }
     }
 }

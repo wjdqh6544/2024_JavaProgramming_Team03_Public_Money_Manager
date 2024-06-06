@@ -1,6 +1,6 @@
 package Service;
 import Controller.FileController;
-import Controller.TransactionController;
+
 import Entity.Group;
 import Entity.Transaction;
 import Entity.abs_Member;
@@ -21,7 +21,7 @@ import javax.mail.internet.MimeMessage;
 public class TransactionService {
     private final FileController fileController = new FileController();
     public TransactionService() {}
-    public void sendEmailToMember(Group groupObj, Transaction transObj) throws AddressException, MessagingException, UnsupportedEncodingException {
+    public void sendEmailToMember(Group groupObj, Transaction transObj) throws MessagingException, UnsupportedEncodingException {
         int count = 0;
         try {
             TreeMap<String, String> conData = fileController.loadConnectionInfo();
@@ -47,8 +47,6 @@ public class TransactionService {
             message.setText(getEmailContext(groupObj, transObj));
             Transport.send(message);
         } catch (UnsupportedEncodingException e) {
-            throw e;
-        } catch (AddressException e) {
             throw e;
         } catch (MessagingException e) {
             throw e;

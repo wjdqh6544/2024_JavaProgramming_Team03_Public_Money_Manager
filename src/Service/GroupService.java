@@ -77,7 +77,7 @@ public class GroupService {
         if (memberObjList.isEmpty() == true){
             throw new NotFoundException("Member subject to settlement");
         } else if (event.replaceAll(" ", "").isEmpty() == true) {
-            throw new NotFoundException("TransAction event");
+            throw new NotFoundException("TransAction event content");
         }
         Transaction transObj = new Transaction(year, month, day, event, income, expense, memberObjList);
         groupObj.addTransaction(transObj);

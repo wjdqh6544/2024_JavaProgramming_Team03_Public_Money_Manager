@@ -1,7 +1,5 @@
 package Entity;
 
-import Exception.NoPermissionException;
-
 /*
  * COMP217: Java Programming / Team 03
  * Prof: Suh, Young-Kyoon
@@ -18,15 +16,5 @@ public class Member extends abs_Member {
     }
     public Member(abs_Member obj){
         super(obj);
-    }
-
-    @Override
-    public boolean canAddMember(String groupName) throws NoPermissionException {
-        throw new NoPermissionException();
-    }
-
-    @Override
-    public boolean canAddTransaction(String groupName) throws NoPermissionException {
-        throw new NoPermissionException();
     }
 }

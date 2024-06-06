@@ -1,4 +1,5 @@
 package Controller;
+import Entity.Group;
 import Entity.MemberPosition;
 import Entity.PositionList;
 import Entity.abs_Member;
@@ -14,17 +15,22 @@ import java.util.TreeMap;
  */
 public class MemberController {
     private final MemberService memberService = new MemberService();
-    public MemberController(){
+    public MemberController(){}
+    public PositionList getPositionOfGroup(abs_Member memberObj, Group groupObj) throws NotFoundException {
+        PositionList res = memberService.getPositionOfGroup(memberObj, groupObj);
+        if (res == null){
+            throw new NotFoundException("Member");
+        }
+        return res;
     }
-    public void addGroup(abs_Member memberObj, String groupName){
+    public void addGroup(abs_Member memberObj, String groupName) throws DuplicatedException {
         try {
             memberService.addGroup(memberObj, new MemberPosition(groupName, PositionList.EMPLOYEE));
         } catch (DuplicatedException e){
             throw e;
         }
-
     }
-    public void editMemberInfo(abs_Member memberObj, String email, int year, int month, int day){
+    public void editMemberInfo(abs_Member memberObj, String email, int year, int month, int day) throws DuplicatedException {
         try {
             memberService.editEmail(memberObj, email);
             memberService.editBirthDay(memberObj, year, month, day);
@@ -32,7 +38,7 @@ public class MemberController {
             throw e;
         }
     }
-    public abs_Member findMemberByNameAndEmail(String name, String email) {
+    public abs_Member findMemberByNameAndEmail(String name, String email) throws NotFoundException {
         abs_Member res = null;
         try {
             res = memberService.findMemberByNameAndEmail(name, email);
@@ -41,15 +47,14 @@ public class MemberController {
             throw e;
         }
     }
-    public void createMember(String name, int year, int month, int day, String email){
+    public void createMember(String name, int year, int month, int day, String email) throws DuplicatedException {
         try {
             memberService.createMember(name, year, month, day, email);
         } catch (DuplicatedException e) {
             throw e;
         }
-
     }
-    public TreeMap<String, abs_Member> findAllMember() {
+    public TreeMap<String, abs_Member> findAllMember() throws NullPointerException {
         TreeMap<String, abs_Member> allMemberList = null;
         try {
              allMemberList = memberService.findAllMember();
@@ -58,7 +63,7 @@ public class MemberController {
             throw e;
         }
     }
-    public void setAllMemberList(TreeMap<String, abs_Member> allMemberList) {
+    public void setAllMemberList(TreeMap<String, abs_Member> allMemberList) throws NullPointerException {
         try {
             memberService.setAllMember(allMemberList);
         } catch (NullPointerException e) {

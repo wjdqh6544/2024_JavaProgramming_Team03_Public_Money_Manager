@@ -15,35 +15,35 @@ import java.util.TreeMap;
 public class GroupController {
     private final GroupService groupService = new GroupService();
     public GroupController(){}
-    public ArrayList<Transaction> findAllTransaction(Group groupObj) {
+    public ArrayList<Transaction> findAllTransaction(Group groupObj) throws NullPointerException {
         try {
             return groupService.findAllTransaction(groupObj);
         } catch (NullPointerException e){
             throw e;
         }
     }
-    public void addTransactionHistory(Group groupObj, int year, int month, int day, String event, int income, int expense, ArrayList<abs_Member> memberObjList) {
+    public void addTransactionHistory(Group groupObj, int year, int month, int day, String event, int income, int expense, ArrayList<abs_Member> memberObjList) throws NotFoundException {
         try {
             groupService.addTransactionHistory(groupObj, year, month, day, event, income, expense, memberObjList);
         } catch (NotFoundException e){
             throw e;
         }
     }
-    public void setAdministrator(Group groupObj, abs_Member memberObj){
+    public void setAdministrator(Group groupObj, abs_Member memberObj) throws NotFoundException, NotChangePositionException {
         try {
             groupService.setGroupAdministrator(groupObj, memberObj);
         } catch (NotFoundException | NotChangePositionException e){
             throw e;
         }
     }
-    public void removeAwaitMember(Group groupObj, abs_Member memberObj) {
+    public void removeAwaitMember(Group groupObj, abs_Member memberObj) throws NotFoundException {
         try {
             groupService.removeAwaitMember(groupObj, memberObj);
         } catch (NotFoundException e) {
             throw e;
         }
     }
-    public void addMemberToGroup(Group groupObj, abs_Member memberObj) {
+    public void addMemberToGroup(Group groupObj, abs_Member memberObj) throws NotFoundException, DuplicatedException {
         try {
             groupService.removeAwaitMember(groupObj, memberObj);
             groupService.addMember(groupObj, memberObj);
@@ -51,14 +51,14 @@ public class GroupController {
             throw e;
         }
     }
-    public void addAwaitMemberToGroup(Group groupObj, abs_Member memberObj){
+    public void addAwaitMemberToGroup(Group groupObj, abs_Member memberObj) throws DuplicatedException {
         try {
             groupService.addAwaitMember(groupObj, memberObj);
         } catch (DuplicatedException e){
             throw e;
         }
     }
-    public Group findGroupByName(String name){
+    public Group findGroupByName(String name) throws NotFoundException {
         Group res = null;
         try {
             res = groupService.findGroupByName(name);
@@ -67,7 +67,7 @@ public class GroupController {
             throw e;
         }
     }
-    public void createGroup(String name, abs_Member memberObj){
+    public void createGroup(String name, abs_Member memberObj) throws DuplicatedException {
         try {
             groupService.createGroup(name, memberObj);
             memberObj.addGroup(new MemberPosition(name, PositionList.PRESIDENT));
@@ -75,7 +75,7 @@ public class GroupController {
             throw e;
         }
     }
-    public TreeMap<String, abs_Member> findAwaitMemberList(Group groupObj){
+    public TreeMap<String, abs_Member> findAwaitMemberList(Group groupObj) throws NullPointerException {
         TreeMap<String, abs_Member> awaitMemberList = null;
         try {
             awaitMemberList = groupService.findAwaitMemberList(groupObj);
@@ -84,7 +84,7 @@ public class GroupController {
             throw e;
         }
     }
-    public TreeMap<String, abs_Member> findAllGroupMemberList(Group groupObj) {
+    public TreeMap<String, abs_Member> findAllGroupMemberList(Group groupObj) throws NullPointerException {
         TreeMap<String, abs_Member> allGroupMemberList = null;
         try {
             allGroupMemberList = groupService.findAllGroupMemberList(groupObj);
@@ -93,7 +93,7 @@ public class GroupController {
             throw e;
         }
     }
-    public TreeMap<String, Group> findAllGroup(){
+    public TreeMap<String, Group> findAllGroup() throws NullPointerException {
         TreeMap<String, Group> allGroupList = null;
         try {
             allGroupList = groupService.findAllGroup();
@@ -102,7 +102,7 @@ public class GroupController {
             throw e;
         }
     }
-    public void setAllGroupList(TreeMap<String, Group> allGroupList){
+    public void setAllGroupList(TreeMap<String, Group> allGroupList) throws NullPointerException {
         try {
             groupService.setAllGroup(allGroupList);
         } catch (NullPointerException e){

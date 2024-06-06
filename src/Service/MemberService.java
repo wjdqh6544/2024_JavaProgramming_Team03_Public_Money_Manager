@@ -17,6 +17,17 @@ import java.util.TreeMap;
 public class MemberService {
     private MemberList memberList = new MemberList();
     public MemberService(){}
+    public PositionList getPositionOfGroup(abs_Member memberObj, Group groupObj){
+        TreeMap<String, MemberPosition> groupList = memberObj.getGroupList();
+        Iterator<Map.Entry<String, MemberPosition>> iter = groupList.entrySet().iterator();
+        while (iter.hasNext() == true) {
+            MemberPosition tmp = iter.next().getValue();
+            if (tmp.getGroupName().equals(groupObj.getGroupName()) == true) {
+                return tmp.getPosition();
+            }
+        }
+        return null;
+    }
     public void removeGroup(abs_Member memberObj, Group groupObj) throws NotFoundException {
         TreeMap<String, MemberPosition> posList = memberObj.getGroupList();
         Iterator<Map.Entry<String, MemberPosition>> iter = posList.entrySet().iterator();

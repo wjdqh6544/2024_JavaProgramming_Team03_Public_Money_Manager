@@ -4,6 +4,7 @@ import Entity.abs_Member;
 import Service.FileService;
 import Exception.ObjectSaveException;
 import Exception.ObjectLoadException;
+import com.jcraft.jsch.IO;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.SftpException;
 import org.json.simple.parser.ParseException;
@@ -52,7 +53,7 @@ public class FileController {
         }
 
     }
-    public TreeMap<String, String> loadConnectionInfo() {
+    public TreeMap<String, String> loadConnectionInfo() throws ObjectLoadException {
         TreeMap<String, String> conData = null;
         try {
             conData = fileService.readConnInfoFile();
@@ -71,18 +72,18 @@ public class FileController {
             downloadDataFile("Member");
             System.out.println("Member File downloaded Successfully.");
         } catch (JSchException | IOException | SftpException e){
-            System.out.println("Member File not exist. Create empty file.\n");
             saveMember(new TreeMap<String, abs_Member>());
+            System.out.println("Member File not exist. Create empty file.\n");
         }
         try {
             downloadDataFile("Group");
             System.out.println("Group File downloaded Successfully.");
         } catch (JSchException | IOException | SftpException e) {
-            System.out.println("Group File not exist. Create empty file.\n");
             saveGroup(new TreeMap<String, Group>());
+            System.out.println("Group File not exist. Create empty file.\n");
         }
     }
-    public TreeMap<String, Group> loadGroup(){
+    public TreeMap<String, Group> loadGroup() throws ObjectLoadException {
         TreeMap<String, Group> allGroupList = null;
         try {
             allGroupList = fileService.readGroupList();
@@ -95,7 +96,7 @@ public class FileController {
             throw new ObjectLoadException("Group", "I/O Exception.");
         }
     }
-    public TreeMap<String, abs_Member> loadMember(){
+    public TreeMap<String, abs_Member> loadMember() throws ObjectLoadException {
         TreeMap<String, abs_Member> allMemberList = null;
         try {
             allMemberList = fileService.readMemberList();
@@ -108,7 +109,7 @@ public class FileController {
             throw new ObjectLoadException("Member", "I/O Exception.");
         }
     }
-    public boolean saveGroup(TreeMap<String, Group> allGroupList){
+    public boolean saveGroup(TreeMap<String, Group> allGroupList) throws ObjectSaveException {
         try {
             fileService.saveGroupList(allGroupList);
             return true;
@@ -116,7 +117,7 @@ public class FileController {
             throw new ObjectSaveException("Group", "I/O Exception.");
         }
     }
-    public boolean saveMember(TreeMap<String, abs_Member> allMemberList){
+    public boolean saveMember(TreeMap<String, abs_Member> allMemberList) throws ObjectSaveException {
         try {
             fileService.saveMemberList(allMemberList);
             return true;

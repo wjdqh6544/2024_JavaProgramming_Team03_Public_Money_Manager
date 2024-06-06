@@ -24,27 +24,25 @@ public class TransactionController {
     private final TransactionService transactionService = new TransactionService();
     private final GroupService groupService = new GroupService();
     public TransactionController(){}
-    public void sendEmailToMember(Group groupObj, Transaction transObj) throws AddressException, MessagingException, UnsupportedEncodingException {
+    public void sendEmailToMember(Group groupObj, Transaction transObj) throws MessagingException, UnsupportedEncodingException, ObjectLoadException {
         try {
             transactionService.sendEmailToMember(groupObj, transObj);
-        } catch (UnsupportedEncodingException e) {
+        } catch (ObjectLoadException e){
             throw e;
-        } catch (AddressException e) {
+        } catch (UnsupportedEncodingException e) {
             throw e;
         } catch (MessagingException e) {
             throw e;
-        } catch (ObjectLoadException e){
-            throw e;
         }
     }
-    public int findExpensePerPerson(Transaction transObj){
+    public int findExpensePerPerson(Transaction transObj) throws NotFoundException, NullPointerException {
         try {
             return transactionService.findExpensePerPerson(transObj);
         } catch (NotFoundException | NullPointerException e){
             throw e;
         }
     }
-    public void manualAddMember(Group groupObj, Transaction transObj, abs_Member memberObj){
+    public void manualAddMember(Group groupObj, Transaction transObj, abs_Member memberObj) throws DuplicatedException, NotFoundException {
         try {
             TreeMap<String, abs_Member> groupMemberList = groupService.findAllGroupMemberList(groupObj);
             Iterator<Map.Entry<String, abs_Member>> iter = groupMemberList.entrySet().iterator();
@@ -59,7 +57,7 @@ public class TransactionController {
             throw e;
         }
     }
-    public void changeMemberToFinish(Transaction transObj, abs_Member memberObj){
+    public void changeMemberToFinish(Transaction transObj, abs_Member memberObj) throws DuplicatedException {
         try {
             transactionService.removeMember(transObj, memberObj);
             transactionService.addFinishMember(transObj, memberObj);
@@ -68,7 +66,7 @@ public class TransactionController {
             throw e;
         }
     }
-    public TreeMap<String, abs_Member> findFinishMember(Transaction transObj){
+    public TreeMap<String, abs_Member> findFinishMember(Transaction transObj) throws NullPointerException {
         try {
             TreeMap<String, abs_Member> finishMemberList = transactionService.findAllFinishMember(transObj);
             return finishMemberList;
@@ -76,7 +74,7 @@ public class TransactionController {
             throw e;
         }
     }
-    public TreeMap<String, abs_Member> findNotFinishMember(Transaction transObj){
+    public TreeMap<String, abs_Member> findNotFinishMember(Transaction transObj) throws NullPointerException {
         try {
             TreeMap<String, abs_Member> notFinishMemberList = transactionService.findAllNotFinishMember(transObj);
             return notFinishMemberList;
@@ -84,7 +82,7 @@ public class TransactionController {
             throw e;
         }
     }
-    public TreeMap<String, abs_Member> findAllMember(Transaction transObj){
+    public TreeMap<String, abs_Member> findAllMember(Transaction transObj) throws NullPointerException {
         try {
             TreeMap<String, abs_Member> resAllMember = transactionService.findAllNotFinishMember(transObj);
             resAllMember.putAll(transactionService.findAllFinishMember(transObj));
