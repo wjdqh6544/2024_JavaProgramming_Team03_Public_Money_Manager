@@ -161,4 +161,14 @@ public class GroupService {
         }
         groupList.setAllGroupList(allGroupList);
     }
+    public boolean checkIfInAwait(Group groupObj, abs_Member memberObj){
+        TreeMap<String, abs_Member> awaitMemberList = findAwaitMemberList(groupObj);
+        Iterator<Map.Entry<String, abs_Member>> iter = awaitMemberList.entrySet().iterator();
+        while(iter.hasNext()){
+            if (iter.next().getValue().equals(memberObj)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

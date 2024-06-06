@@ -115,4 +115,7 @@ public class data {
     public TreeMap<String, Group> getAllGroupList() throws NullPointerException {
         return groupController.findAllGroup();
     }
+    public boolean checkIfInAwait(Group groupObj){
+        return groupController.checkIfInAwait(groupObj, this.sessionMember);
+    }
 }

@@ -15,6 +15,9 @@ import java.util.TreeMap;
 public class GroupController {
     private final GroupService groupService = new GroupService();
     public GroupController(){}
+    public boolean checkIfInAwait(Group groupObj, abs_Member memberObj) {
+        return groupService.checkIfInAwait(groupObj, memberObj);
+    }
     public ArrayList<Transaction> findAllTransaction(Group groupObj) throws NullPointerException {
         try {
             return groupService.findAllTransaction(groupObj);
