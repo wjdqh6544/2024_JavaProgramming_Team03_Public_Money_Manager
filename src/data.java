@@ -33,8 +33,8 @@ public class data {
 
     public void initialization() throws ObjectLoadException{
         fileController.fileInitializer();
-        fileController.loadMember();
-        fileController.loadGroup();
+        memberController.setAllMemberList(fileController.loadMember());
+        groupController.setAllGroupList(fileController.loadGroup());
     }
     public void saveAndUploadFile() throws ObjectSaveException, JSchException, SftpException, IOException {
         fileController.saveMember(memberController.findAllMember());
