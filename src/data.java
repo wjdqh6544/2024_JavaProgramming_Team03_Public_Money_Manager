@@ -74,7 +74,7 @@ public class data {
     public TreeMap<String, MemberPosition> getAllGroupOfMember(){
         return this.sessionMember.getGroupList();
     }
-    public void setAdministrator(abs_Member adminObj) throws PermissionException {
+    public void setAdministrator(abs_Member adminObj) throws PermissionException, NotFoundException, NotChangePositionException {
         if (this.sessionMember.equals(this.sessionGroup.getPresident()) == true){
             groupController.setAdministrator(this.sessionGroup, adminObj);
         } else {
