@@ -17,6 +17,13 @@ public class GroupService {
     private MemberService memberService = new MemberService();
     private GroupList groupList = new GroupList();
     public GroupService(){}
+    public void editBalance(Group groupObj, int balance) throws NotAllowNegativeException {
+        if ((groupObj.getBalance() + balance) < 0) {
+            throw new NotAllowNegativeException();
+        } else {
+            groupObj.setBalance(groupObj.getBalance() + balance);
+        }
+    }
     public ArrayList<Transaction> findAllTransaction(Group groupObj) throws NullPointerException {
         try {
             return groupObj.getTransactionList();

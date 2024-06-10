@@ -15,6 +15,13 @@ import java.util.TreeMap;
 public class GroupController {
     private final GroupService groupService = new GroupService();
     public GroupController(){}
+    public void editBalance(Group groupObj, int balance) throws NotAllowNegativeException {
+        try {
+            groupService.editBalance(groupObj, balance);
+        } catch (NotAllowNegativeException e){
+            throw e;
+        }
+    }
     public boolean checkIfInAwait(Group groupObj, abs_Member memberObj) {
         return groupService.checkIfInAwait(groupObj, memberObj);
     }

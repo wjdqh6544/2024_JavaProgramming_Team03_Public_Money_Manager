@@ -133,4 +133,7 @@ public class data {
     public void changeMemberToFinish(abs_Member memberObj) throws NotFoundException, DuplicatedException {
         transactionController.changeMemberToFinish(this.sessionTrans, memberObj);
     }
+    public void editBalance(int balance) throws NotAllowNegativeException {
+        groupController.editBalance(this.sessionGroup, balance);
+    }
 }
