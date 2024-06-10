@@ -1,3 +1,5 @@
+package Start;
+
 import Controller.FileController;
 import Controller.GroupController;
 import Controller.MemberController;
@@ -28,7 +30,7 @@ public class data {
     private abs_Member sessionMember;
     private Group sessionGroup;
     private Transaction sessionTrans;
-    
+
     public data(){}
 
     public void initialization() throws ObjectLoadException{
@@ -44,6 +46,9 @@ public class data {
     public void login(String name, String email) throws NotFoundException {
         this.sessionMember = memberController.findMemberByNameAndEmail(name, email);
     }
+    public abs_Member findMemberByNameAndEmail(String name, String email) throws NotFoundException {
+        return memberController.findMemberByNameAndEmail(name, email);
+    }
     public void selectGroup(Group groupObj){
         this.sessionGroup = groupObj;
     }
@@ -52,6 +57,9 @@ public class data {
     }
     public void createGroup(String name) throws DuplicatedException {
         groupController.createGroup(name, this.sessionMember);
+    }
+    public abs_Member getUser() {
+        return this.sessionMember;
     }
     public void requestJoinGroup(Group groupObj) throws DuplicatedException {
         groupController.addAwaitMemberToGroup(groupObj, this.sessionMember);
@@ -94,6 +102,9 @@ public class data {
     public PositionList getPositionOfGroup(Group groupObj) throws NotFoundException {
         return memberController.getPositionOfGroup(this.sessionMember, groupObj);
     }
+    public PositionList getPositionOfGroup(abs_Member memberObj) throws NotFoundException {
+        return memberController.getPositionOfGroup(memberObj, this.sessionGroup);
+    }
     public void selectTransaction(Transaction transaction) {
         this.sessionTrans = transaction;
     }
@@ -115,5 +126,11 @@ public class data {
     }
     public boolean checkIfInAwait(Group groupObj){
         return groupController.checkIfInAwait(groupObj, this.sessionMember);
+    }
+    public Group findGroupByName(String name) throws NotFoundException{
+        return groupController.findGroupByName(name);
+    }
+    public void changeMemberToFinish(abs_Member memberObj) throws NotFoundException, DuplicatedException {
+        transactionController.changeMemberToFinish(this.sessionTrans, memberObj);
     }
 }
