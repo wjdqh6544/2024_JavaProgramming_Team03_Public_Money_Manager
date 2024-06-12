@@ -37,7 +37,8 @@ public class sett_window extends JPanel implements Constants {
     private Transaction selectedTransaction;
     private abs_Member selectedMember;
     private TransactionService transactionService;
-
+    
+    private boolean isFirstMemberAdded;
     public sett_window(Entity.Group g, data data) {
         this.dat = data;
         this.g = g;
@@ -124,7 +125,7 @@ public class sett_window extends JPanel implements Constants {
                 expensePerPerson = 0;
             }
 
-            boolean isFirstMemberAdded = false;
+            isFirstMemberAdded = false;
 
             for (abs_Member member : transaction.getMemberList().values()) {
                 String maskedEmail = maskEmail(member.getName(), member.getEmail());
@@ -178,7 +179,11 @@ public class sett_window extends JPanel implements Constants {
             con.weightx = columnWeights[i];
             con.gridx = i;
             panel.add(label, con);
+            con.weightx = columnWeights[i];
+            con.gridx = i + 1;
+            con.insets = new Insets(0, 5, 0, 0);
             if (data.get(i).equals("N")) {
+            	if(!isFirstMemberAdded) {
                 JButton sendButton = new JButton("Send Message");
                 sendButton.setFont(new Font("SansSerif", Font.PLAIN, 15));
                 sendButton.setBackground(Color.WHITE);
@@ -197,11 +202,8 @@ public class sett_window extends JPanel implements Constants {
                         }
                     }
                 });
-                con.weightx = columnWeights[i];
-                con.gridx = i + 1;
-                con.insets = new Insets(0, 5, 0, 0);
                 panel.add(sendButton, con);
-
+            	}
                 JButton removeButton = new JButton("Remove Member");
                 removeButton.setFont(new Font("SansSerif", Font.PLAIN, 15));
                 removeButton.setBackground(Color.WHITE);
