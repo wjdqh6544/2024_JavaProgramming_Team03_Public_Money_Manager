@@ -54,19 +54,19 @@
 ### Class implementation
 - The class diagram is below.
 ### [Full Diagram]
-![클래스 다이어그램 drawio](https://github.com/Team3-COMP0217001/serviceLogic/assets/77498822/aba56ade-b7e3-4d31-9b13-83d5cbe4806a)
+![클래스 다이어그램](https://github.com/Team3-COMP0217001/serviceLogic/assets/77498822/106992b6-257f-4956-9d95-644236d023cd)
 
 ### [Entity Package Diagram]
-![entity](https://github.com/Team3-COMP0217001/serviceLogic/assets/77498822/345cf46b-5b33-4629-b237-86cdfe0aba07)
+![Entity](https://github.com/Team3-COMP0217001/serviceLogic/assets/77498822/c4a33559-005e-44bc-8522-36bf94471374)
 
 ### [Service Package Diagram]
-![service](https://github.com/Team3-COMP0217001/serviceLogic/assets/77498822/1677e33b-0b1e-4b4f-81e9-22decb88a85a)
+![Service](https://github.com/Team3-COMP0217001/serviceLogic/assets/77498822/e85d0d73-9e71-4508-b381-58b508f27487)
 
 ### [Controller Package Diagram]
-![controller](https://github.com/Team3-COMP0217001/serviceLogic/assets/77498822/28d03d1a-f459-43e2-961c-58ba89197943)
+![Controller](https://github.com/Team3-COMP0217001/serviceLogic/assets/77498822/82d96680-5b9c-4fbd-8e8c-f3a756c55b98)
 
 ### [data.java Diagram]
-![data java](https://github.com/Team3-COMP0217001/serviceLogic/assets/77498822/54561c64-9e4c-46fb-98f6-5a915f29103a)
+![data java](https://github.com/Team3-COMP0217001/serviceLogic/assets/77498822/600ed6bc-a3c8-4eb0-8dc6-6c4616b609f4)
 
 ---
 ### Contact
