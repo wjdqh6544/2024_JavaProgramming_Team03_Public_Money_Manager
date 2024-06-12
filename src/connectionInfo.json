@@ -7,5 +7,5 @@
     "sftp_host": "111.111.111.111",
     "sftp_host_port": "22",
     "sftp_user_id": "<userId>",
-    "sftp_user_pw": "<userPw>",
+    "sftp_user_pw": "<userPw>"
 }

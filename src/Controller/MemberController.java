@@ -1,4 +1,5 @@
 package Controller;
+
 import Entity.Group;
 import Entity.MemberPosition;
 import Entity.PositionList;
@@ -6,6 +7,7 @@ import Entity.abs_Member;
 import Service.MemberService;
 import Exception.*;
 import java.util.TreeMap;
+
 /*
  * COMP217: Java Programming / Team 03
  * Prof: Suh, Young-Kyoon
@@ -30,7 +32,6 @@ public class MemberController {
             throw e;
         }
     }
-
     public abs_Member findMemberByNameAndEmail(String name, String email) throws NotFoundException {
         abs_Member res = null;
         try {

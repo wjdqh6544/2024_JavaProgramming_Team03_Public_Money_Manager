@@ -1,4 +1,5 @@
 package Entity;
+
 import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.time.LocalDate;

@@ -1,14 +1,9 @@
-package Start;
+package Controller;
 
-import Controller.FileController;
-import Controller.GroupController;
-import Controller.MemberController;
-import Controller.TransactionController;
 import Entity.*;
 import Exception.*;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.SftpException;
-
 import javax.mail.MessagingException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

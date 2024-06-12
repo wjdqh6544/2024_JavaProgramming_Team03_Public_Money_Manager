@@ -1,17 +1,17 @@
 package Service;
+
 import Entity.Group;
 import Entity.abs_Member;
 import com.jcraft.jsch.*;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
-
 import java.io.*;
 import java.net.InetAddress;
 import java.util.Iterator;
 import java.util.Properties;
 import java.util.TreeMap;
+
 /*
  * COMP217: Java Programming / Team 03
  * Prof: Suh, Young-Kyoon

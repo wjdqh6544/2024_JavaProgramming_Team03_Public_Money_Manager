@@ -1,6 +1,6 @@
 package Service;
-import Controller.FileController;
 
+import Controller.FileController;
 import Entity.Group;
 import Entity.Transaction;
 import Entity.abs_Member;
@@ -11,6 +11,7 @@ import javax.mail.*;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
 /*
  * COMP217: Java Programming / Team 03
  * Prof: Suh, Young-Kyoon
@@ -22,6 +23,7 @@ public class TransactionService {
     private final FileController fileController = new FileController();
     public TransactionService() {}
     public void sendEmailToMember(Group groupObj, Transaction transObj) throws MessagingException, UnsupportedEncodingException {
+        int count = 0;
         try {
             TreeMap<String, String> conData = fileController.loadConnectionInfo();
             Properties prop = new Properties();
