@@ -52,7 +52,7 @@
 -----
 
 ### Class implementation
-- The class diagram is below.
+- The class diagrams are below.
 ### [Full Diagram]
 ![클래스 다이어그램](https://github.com/Team3-COMP0217001/serviceLogic/assets/77498822/106992b6-257f-4956-9d95-644236d023cd)
 
