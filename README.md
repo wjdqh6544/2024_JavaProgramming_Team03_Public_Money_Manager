@@ -1,5 +1,5 @@
 ## Java Programming Team 3 - 공금 관리 프로그램
-- This is a repository which contains some class relative to service logic.
+- This is a repository which contains some class relative to Swing Component.
 - The semester of course: 2024-Spring / COMP0217-001
 - Professor: Suh, Young-Kyoon
 
@@ -76,10 +76,10 @@
 ---
 
 ## Contact
-# About Manager Package
+### About Manager Package
 * Lee, Da-Eun
 * Undergraduate, Dept. of Computer Science & Engineering, Kyungpook Nat'l Univ.
-# About the Others
+### About the Others
 * Roh, Seong-Min
 * Undergraduate, Dept. of Computer Science & Engineering, Kyungpook Nat'l Univ.
 
