@@ -65,6 +65,11 @@ public class GroupService {
             if (groupObj.getPresident().equals(memberObj) == true){
                 throw new NotChangePositionException();
             }
+            abs_Member tmp = groupObj.getAdministrator();
+            if (tmp != null){
+                memberService.removeGroup(tmp, groupObj);
+                memberService.addGroup(new Member(tmp), new MemberPosition(groupObj.getGroupName(), PositionList.EMPLOYEE));
+            }
             memberService.removeGroup(memberObj, groupObj);
             memberService.addGroup(memberObj, new MemberPosition(groupObj.getGroupName(), PositionList.ADMINISTRATOR));
             groupObj.setAdministrator(new Administrator(memberObj));
