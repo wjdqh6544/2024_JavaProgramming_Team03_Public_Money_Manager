@@ -1,0 +1,11 @@
+{
+    "mail_host": "111.111.111.111",
+    "mail_host_port": "587",
+    "mail_user_id": "<userId>@<Domain>",
+    "mail_user_pw": "<password>",
+    "sender": "Team03_COMP0217",
+    "sftp_host": "111.111.111.111",
+    "sftp_host_port": "22",
+    "sftp_user_id": "<userId>",
+    "sftp_user_pw": "<userPw>"
+}
