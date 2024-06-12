@@ -1,79 +1,68 @@
-## Java Programming Team 3 - 공금 관리 프로그램
-- This is a repository which contains some class relative to service logic.
+## 자바프로그래밍 3팀 - 공금 관리 프로그램
+- 자바프로그래밍 3팀 프로젝트 최종 결과물입니다.
 - The semester of course: 2024-Spring / COMP0217-001
 - Professor: Suh, Young-Kyoon
 
+### 팀원 구성
+- 노성민: 기획, UI/UX, 디자인, PPT
+- 서형철: 기획, 기능 설계 및 구현
+- 이다은: 기획, UI/UX, 발표 및 Demo 영상제작
+
+### Swing, ServiceLogic 리포지토리에 Readme 를 별도로 작성하였습니다.
+- 세부 사항은 각 Readme 를 참고해주시면 감사드리겠습니다.
+- (README_Swing.md, README_ServiceLogic.md)
+
 -----
 
-### Development Environment
+### 개발 환경
 - OpenJDK 1.8
-- IntelliJ
-- Mail Transfer Agent(MTA): Postfix (at Remote Server)
+- IntelliJ + Eclipse
+- 메일 발송 서버 (MTA): Postfix (별도의 서버를 구축)
 
-### The thing needed to run this program
-- Editing Connection Information. (./src/connectionInfo.json)
-	- Need to edit host, connection port, Connection User and Password of MailServer, SFTPServer.
-	- In the case of MailServer, Need to edit Mail Sender additionally.
-	- Be careful that all information written as form of "String".
-- Adding External Library. (The list is enumerated below.)
+### 프로그램 실행 전 작업
+- 서버 접속 정보 수정 (메일서버 + SFTP 파일서버)
+	- 서버 IP 및 접속 포트, 유저 ID 및 비밀번호를 기입하여야 합니다.
+	- 보안 유출 우려로, GitHUB 에는 더미 데이터를 올려두었습니다. PPT 에 기재된 대로 수정하여야 정상 작동하니 양해 부탁드립니다.
+	- 모든 설정값은 문자열 형태로 입력되어야 합니다.
+- 몇몇 외부 라이브러리. (아래에 목록이 있습니다.)
 
-### Used External Librarys
+### 사용한 외부 라이브러리
 - jsch-0.1.55.jar // https://sourceforge.net/projects/jsch/files/jsch.jar/0.1.55/jsch-0.1.55.jar/download
 - json-simple-1.1.1.jar // https://code.google.com/archive/p/json-simple/downloads
 - mail-1.4.7.jar // https://mvnrepository.com/artifact/javax.mail/mail/1.4.7
 - hamcrest-core-1.1.jar (for test in IntelliJ. Not used in Program Sources Code.)
 - junit-4.10.jar (for test in IntellJ. Not used in Program Sources Code.)
 
-### Where to exist data file?
-- allGroupList.dat and allMemberList.dat is the file that contain data of this program.
-- Located at "./src".
-- allGroupList.dat: It contains all group information.
-- allMemberList.dat: It contains all member information.
-- When starting the program, It trying to download two data file from server. (Data synchronization)
-- If either file does not exist on server and local, the missing file is created as an empty automatically.
-- When closing the program, changed data is saved to two file(allGroupList.dat, allMemberList.dat), and upload to server automatically.
+### 데이터 파일은 어디에 저장되는가?
+- 프로그램은 크게 멤버 데이터와 그룹 데이터를 분리하여 저장합니다.
+- ./src 디렉토리 안에, allMemberList.dat 및 allGroupList.dat 파일로 저장됩니다.
+- 프로그램이 실행되면, 서버에 저장된 파일을 다운로드받습니다. 서버에 파일이 없다면 로컬에 저장된 것을 사용합니다.
+- 로컬에도 파일이 없다면, 빈 파일을 하나 생성하여 사용하게 됩니다.
+- 프로그램을 닫으면, 변경된 멤버/그룹 정보를 저장하고 서버에 업로드합니다.
 
 -----
 
-### Sources Code Structure
-- Tried to apply "MVC Patterns"
+### 소스코드 구조
+- MVC 패턴의 적용을 시도해보았습니다.
 - Swing <-> (data.java) <-> Controller <-> Service <-> Entity
-- data.java is a set of various methods in Controller.
-- It is made with a combination of methods of controller, and is connected to Swing.
-- It made to the purpose that invoke methods of Controller easily.
-  (If It does not exist, some combination of Controller Method will be needed at Swing ActionListener.)
-- Thus, Swing invoke some methods in dava.java ONLY.
-
-### Program Iitialization steps
-- In the first, Swing will load the information about group and member data from a local file. (Deserialization)
-- Loaded information is stored in data class. (at data.java).
-- Then, Swing invokes service logic methods in data class using loaded information.
+- data.java 파일은 Controller 의 여러 메소드를 조합하여 만든 새로운 클래스입니다.
+- Swing 에서 메소드를 호출할 때, Controller 의 여러 메소드를 조합하지 않고, 하나의 메소드만 불러도 처리할 수 있도록 합니다.
+- 프로그램에 로그인한 각 사용자를 기억하는, 즉 "세션" 유지의 역할을 수행할 수 있습니다. (data.java 에 세션 정보를 저장)
 
 -----
 
-### Class implementation
-- The class diagram is below.
-### [Full Diagram]
-![클래스 다이어그램](https://github.com/Team3-COMP0217001/serviceLogic/assets/77498822/106992b6-257f-4956-9d95-644236d023cd)
-
-### [Entity Package Diagram]
-![Entity](https://github.com/Team3-COMP0217001/serviceLogic/assets/77498822/c4a33559-005e-44bc-8522-36bf94471374)
-
-### [Service Package Diagram]
-![Service](https://github.com/Team3-COMP0217001/serviceLogic/assets/77498822/e85d0d73-9e71-4508-b381-58b508f27487)
-
-### [Controller Package Diagram]
-![Controller](https://github.com/Team3-COMP0217001/serviceLogic/assets/77498822/82d96680-5b9c-4fbd-8e8c-f3a756c55b98)
-
-### [data.java Diagram]
-![data java](https://github.com/Team3-COMP0217001/serviceLogic/assets/77498822/600ed6bc-a3c8-4eb0-8dc6-6c4616b609f4)
+### 클래스 구현
+- README_Swing 및 README_ServiceLogic.md 를 참고해 주시면 감사드리겠습니다.
 
 ---
-### Contact
-- Seo, Hyeong-Cheol
-- Undergraduate, Dept. of Computer Science & Engineering, Kyungpook Nat'l Univ.
-- Please check my [profile](https://github.com/wjdqh6544). Thank you.
-  
+### 라인 수
+- 약 2,100 + 3,500 = 5,600 Line. (주석 포함)
+- [ServiceLogic]
+- ![image](https://github.com/Team3-COMP0217001/serviceLogic/assets/77498822/9957c77b-6121-4408-a0ac-b280eefdaaa4)
+- [Swing]
+- ![image](https://github.com/Team3-COMP0217001/swing/assets/77498822/a9e5db55-92dc-4668-a090-ffbfdafdfed4)
+---
+
 ### Last Changed: 2024. 06. 10 (Wed.)
 - Add Information: 2024. 06. 12 (Wed.)
 - Add Information: 2024. 06. 10 (Mon.)
