@@ -69,6 +69,10 @@
 ![data java](https://github.com/Team3-COMP0217001/serviceLogic/assets/77498822/600ed6bc-a3c8-4eb0-8dc6-6c4616b609f4)
 
 ---
+### Line of Code
+- About 2,100 Line.
+- ![image](https://github.com/Team3-COMP0217001/serviceLogic/assets/77498822/9957c77b-6121-4408-a0ac-b280eefdaaa4)
+---
 ### Contact
 - Seo, Hyeong-Cheol
 - Undergraduate, Dept. of Computer Science & Engineering, Kyungpook Nat'l Univ.
