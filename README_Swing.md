@@ -20,6 +20,8 @@
 * Manager let members view balance lists and managers add transitions and send settlement e-mails.
 
 ## How to Start Program
+* In Eclipse, go to Window->Preference->General->Workspace->Text file incoding and fix it to Other: UTF-8
+![Warning](https://github.com/Team3-COMP0217001/swing/assets/163842078/feb19e7e-bd4a-4a1f-9775-dbcb6e112c6f)
 * You should locate all files in /src/
 * In Start package, implement 'pbmDemo'
 
