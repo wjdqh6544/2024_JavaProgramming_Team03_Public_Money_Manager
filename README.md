@@ -14,6 +14,11 @@
 
 -----
 
+### 프로그램 실행
+- ./src/Start/pbmDemo.java 실행
+- 만약 한글이 깨지면, 인코딩을 UTF-8 로 바꾸어야 합니다.
+- Eclipse 기준, 설정 -> Window->Preference->General->Workspace->Text file incoding and fix it to Other: UTF-8
+
 ### 개발 환경
 - OpenJDK 1.8
 - IntelliJ + Eclipse
