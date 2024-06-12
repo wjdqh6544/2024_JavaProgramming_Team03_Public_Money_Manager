@@ -33,6 +33,7 @@ public class home_window {
 		JButton plus = null;
 	public home_window(data data) {
 		this.dat = data;
+		cen = new JPanel();
 	
 		JPanel myname = new JPanel();
 		myname.setPreferredSize(new Dimension(1000,50));
