@@ -31,40 +31,26 @@ public class Main {
     @Test
     public void macro(){
         fileInitializerTest();
-        createTest();
-        saveMemberTest();
-        createGroupTest();
-        saveGroupTest();
-        System.out.println("---- addAwaitMemberToGroupTestTemp ----");
-        addAwaitMemberToGroupTestTmp();
-        System.out.println("---- addMemberToGroupTestTmp ----");
-        addMemberToGroupTestTmp();
-        setAdministratorTestTmp();
-        System.out.println("---- addTransactionTestTmp ----");
-        addTransactionTestTmp();
-        System.out.println("---- changeMemberToFinishTest ----");
-        System.out.println("---- manualAddMemberTest ----");
-        manualAddMemberTest();
-        saveGroupTest();
+        loadMemberTest();
         loadGroupTest();
-        System.out.println("---- findExpensePerPersonTest ----");
-        findExpensePerPersonTest();
-        System.out.println("---- sendEmailToMemberTest ----");
-        sendEmailToMemberTest();
-        changeMemberToFinishTest();
-        sendEmailToMemberTest();
-        changeMemberToFinishTest2();
-        sendEmailToMemberTest();
-        uploadDataFileTest();
+        Group groupObj = groupController.findGroupByName("Test0");
+        Transaction transObj = groupObj.getTransactionList().get(0);
+        System.out.println("------------------------");
+        System.out.println(groupObj);
+        System.out.println("------------------------");
+        System.out.println(transObj);
+        System.out.println("------------------------");
+        sendEmailToMember(groupObj, transObj);
+        System.out.println("Email sent.");
     }
     @Test
     public void fileInitializerTest(){
         fileController.fileInitializer();
     }
-    @Test
-    public void downloadDataFileTest(){
+    //@Test
+    public void downloadDataFileTest(String type){
         try{
-            fileController.downloadDataFile("");
+            fileController.downloadDataFile(type);
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -80,9 +66,7 @@ public class Main {
     }
     @Test
     public void sendEmailToMemberTest(){
-        loadGroupTest();
-        loadMemberTest();
-        Group groupObj = groupController.findGroupByName("G1");
+        Group groupObj = groupController.findGroupByName("Test1");
         Transaction transObj = groupController.findAllTransaction(groupObj).get(0);
         sendEmailToMember(groupObj, transObj);
         System.out.println("Send Successfully!");
@@ -316,9 +300,15 @@ public class Main {
         }
         saveMemberTest();
     }
+    @Test
+    public void login() throws NotFoundException {
+        loadMemberTest();
+        System.out.println(memberController.findMemberByNameAndEmail("1", "1@1"));
+    }
 
     @Test
     public void loadMemberTest(){ // tested.
+        downloadDataFileTest("Member");
         memberController.setAllMemberList(fileController.loadMember());
         TreeMap<String, abs_Member> allMemberList = memberController.findAllMember();
         Iterator<Map.Entry<String, abs_Member>> iter = allMemberList.entrySet().iterator();

@@ -22,7 +22,6 @@ public class TransactionService {
     private final FileController fileController = new FileController();
     public TransactionService() {}
     public void sendEmailToMember(Group groupObj, Transaction transObj) throws MessagingException, UnsupportedEncodingException {
-        int count = 0;
         try {
             TreeMap<String, String> conData = fileController.loadConnectionInfo();
             Properties prop = new Properties();

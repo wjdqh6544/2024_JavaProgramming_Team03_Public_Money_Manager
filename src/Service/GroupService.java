@@ -14,7 +14,7 @@ import java.util.TreeMap;
  * @author: Seo, HyeongCheol
  */
 public class GroupService {
-    private MemberService memberService = new MemberService();
+    private final MemberService memberService = new MemberService();
     private GroupList groupList = new GroupList();
     public GroupService(){}
     public void editBalance(Group groupObj, int balance) throws NotAllowNegativeException {

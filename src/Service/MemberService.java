@@ -49,18 +49,6 @@ public class MemberService {
         }
         memberObj.addGroup(pos);
     }
-    public void editBirthDay(abs_Member memberObj, int year, int month, int day){
-        memberObj.getBirthday().setYear(year);
-        memberObj.getBirthday().setMonth(month);
-        memberObj.getBirthday().setDay(day);
-    }
-    public void editEmail(abs_Member memberObj, String email) throws DuplicatedException {
-        if (emailExists(email) == true){
-            throw new DuplicatedException("Email");
-        } else {
-            memberObj.setEmail(email);
-        }
-    }
     public boolean emailExists(String email) throws NullPointerException {
         try {
             TreeMap<String, abs_Member> allMemberList = findAllMember();

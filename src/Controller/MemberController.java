@@ -30,14 +30,7 @@ public class MemberController {
             throw e;
         }
     }
-    public void editMemberInfo(abs_Member memberObj, String email, int year, int month, int day) throws DuplicatedException {
-        try {
-            memberService.editEmail(memberObj, email);
-            memberService.editBirthDay(memberObj, year, month, day);
-        } catch (DuplicatedException e){
-            throw e;
-        }
-    }
+
     public abs_Member findMemberByNameAndEmail(String name, String email) throws NotFoundException {
         abs_Member res = null;
         try {

@@ -7,7 +7,6 @@ import Service.GroupService;
 import Service.TransactionService;
 import Exception.*;
 import javax.mail.MessagingException;
-import javax.mail.internet.AddressException;
 import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.Map;

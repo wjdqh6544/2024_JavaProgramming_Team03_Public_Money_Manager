@@ -143,14 +143,6 @@ public class FileService implements Serializable {
             throw e;
         }
     }
-    public boolean existGroupListFile(){
-        File file = new File(FILE_DIR + GROUP_FILE_NAME);
-        return file.exists();
-    }
-    public boolean existMemberListFile() {
-        File file = new File(FILE_DIR + MEMBER_FILE_NAME);
-        return file.exists();
-    }
     public TreeMap<String, abs_Member> readMemberList() throws FileNotFoundException, ClassNotFoundException, IOException {
         try {
             TreeMap<String, abs_Member> allMemberList;
