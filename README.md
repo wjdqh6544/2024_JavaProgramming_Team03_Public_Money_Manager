@@ -1,5 +1,5 @@
 ## Java Programming Team 3 - 공금 관리 프로그램
-- This is a repository which contains some class relative to Swing Component.
+- This is a repository which contains some class relative to service logic.
 - The semester of course: 2024-Spring / COMP0217-001
 - Professor: Suh, Young-Kyoon
 
@@ -26,7 +26,7 @@
 -----
 
 ## Window Implementation
-* The diagram and Progeram windows are below.
+* The diagram is below.
 
 ### [Full Diagram]
 ![all](https://github.com/Team3-COMP0217001/swing/assets/163842078/e364be0c-c547-4524-884a-9cedec07c8b7)
@@ -68,11 +68,18 @@
 
 ---
 
+### Line of Code
+- About 3,500 Line
+- ![image](https://github.com/Team3-COMP0217001/swing/assets/77498822/a9e5db55-92dc-4668-a090-ffbfdafdfed4)
+
+
+---
+
 ## Contact
-### About Manager Package
+# About Manager Package
 * Lee, Da-Eun
 * Undergraduate, Dept. of Computer Science & Engineering, Kyungpook Nat'l Univ.
-### About the Others
+# About the Others
 * Roh, Seong-Min
 * Undergraduate, Dept. of Computer Science & Engineering, Kyungpook Nat'l Univ.
 
