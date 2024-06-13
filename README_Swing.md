@@ -63,7 +63,7 @@
 
 ### [Manager/Balance_Man Window]
 <img width="1007" alt="Balance_Man" src="https://github.com/Team3-COMP0217001/swing/assets/163842078/b5e32c3c-dc31-4296-90af-358078101643">
-<img width="1007" alt="Settlement" src="https://github.com/Team3-COMP0217001/swing/assets/163842078/96e1bfcc-44a0-47a1-ae07-0a6421464581">
+<img width="1010" alt="New Settle" src="https://github.com/Team3-COMP0217001/swing/assets/163842078/8932749d-cc50-4887-accb-bed008bdfeba">
 
 ### [Manager/AddEvent Window]
 ![Add Event](https://github.com/Team3-COMP0217001/swing/assets/163842078/893c9bdc-682e-43fc-92ff-6a3b02f398fb)
